@@ -1,0 +1,12 @@
+<!-- This displays an index of all existing documents and also has a search feature for document titles -->
+
+<h2>Documents</h2>
+
+<div class="documents_index">
+<% @documents.each do |document| %>
+  <div id="documents_index_inner">
+    <h3><%= link_to(document.title, document_path(document)) if document.title %></h3>
+    <p> - <%= document.content if document.content %></p> 
+  </div><!-- documents_index_inner -->
+<% end %>
+</div><!-- documents_index -->

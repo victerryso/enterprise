@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>enterprise</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+</head>
+<div class="top_border">
+  <nav id="homepage_login_nav">
+    <%= render :partial => "/shared/nav_top"  %>
+    <%= render :partial => "/shared/nav"  %>
+  </nav>
+</div>
+
+<body id="application_background">
+  <div class="container">
+    <% if flash[:notice].present? %>
+      <div class="notice">
+        <%= flash[:notice]%>
+      </div> 
+    <% end %>
+
+    <%= yield %>
+
+  </div><!-- container -->
+</body>
+
+<div class="bottom_border">
+  <div id="homepage_logout_nav">  
+    <nav>
+    <%= render :partial => "/shared/nav_bottom"  %>
+    </nav>
+  </div><!-- hpmepage_logout_nav -->
+</div><!-- bottom_border -->
+
+
+</html>

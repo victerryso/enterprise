@@ -1,0 +1,18 @@
+<!-- This is the document form template -->
+
+<div class="document_form">
+  <%= form_for @document do |f| %>
+    <p>
+      <%= f.label :title, "document title" %>
+      <%= f.text_field :title, :autocomplete => 'off', :placeholder => 'Document title is..', :autofocus => true %>
+    </p>
+    <p>
+      <%= f.label :content, "document content" %>
+      <%= f.text_area :content, :placeholder => "Enter the document's content here .." %>
+    </p>
+
+  <div id="document_form_button">
+    <%= f.submit 'Submit' %>
+  </div>
+  <% end %>
+</div>

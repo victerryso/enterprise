@@ -1,0 +1,6 @@
+<div class="users_show">
+  <p><%= @user.username %></p>
+  <p><%= image_tag(@user.avatar, :class => 'medium') if @user.avatar %></p>
+  <p><%= @user.email if @user.email %></p>
+<% end %>
+</div><!-- user_show_div -->

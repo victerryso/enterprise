@@ -1,0 +1,10 @@
+<div class="users_index">
+  <% @users.each do |user| %>
+    <div id="users_index_inner">
+      <%= image_tag(user.avatar, :class =>'users_thumb') if user.avatar %>
+      <p><%= link_to(user.username, user) %></p>
+        <li> • <%= link_to('edit', edit_user_path(user)) %> • </li> 
+        <li> • <%= link_to('remove', user, :data => {:confirm => 'are you sure?', :method => :delete }) %> • </li>
+    </div><!-- users_index_inner -->
+   <% end %>
+</div> 
