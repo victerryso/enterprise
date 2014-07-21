@@ -1,8 +1,23 @@
 class DocumentsController < ApplicationController
   def index
+    # @revisions = Revision.all
     @documents = Document.all
-    @revisions = Revision.all
+    respond_to do |format|
+      format.html #index.html.erb
+      format.json { render json: @documents}
+    end
   end
+
+  def export
+    @documents = Document.all
+    send_data @documents.to_json, :filename => "documents.json"
+  end
+
+  # def import
+  #   post = DataFile.save(params[:upload])
+  #   render :text => "File has been uploaded successfully"
+  # end
+  # end
 
   def create
       @document = Document.new document_params

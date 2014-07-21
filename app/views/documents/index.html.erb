@@ -2,6 +2,12 @@
 
 <h2>Documents</h2>
 
+<p>
+<% if @current_user.try(:is_admin) %>
+  <li><%= link_to('export to json',export_documents_path) %></li>
+<% end %>
+</p>
+
 <div class="documents_index">
 <% @documents.each do |document| %>
   <div id="documents_index_inner">
