@@ -29,10 +29,18 @@ gem 'spring',        group: :development
 gem 'haml'
 gem 'bcrypt-ruby'
 
-gem 'rails_12factor', group: :production
+# File uploads
+gem 'carrierwave'
 
-# gem 'forem', :github => "radar/forem", :branch =>"rails4"
-# gem 'will_paginate', '3.0.5'
+# image post processing
+gem 'mini_magick'
+
+# for cloud storage
+gem 'cloudinary'
+
+gem 'json'
+
+gem 'rails_12factor', group: :production
 
 group :development do
   gem 'pry-rails'
