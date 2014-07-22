@@ -6,6 +6,7 @@ It also lists the relating revision number to the document -->
   <div id="documents_show_notes">
     <p>title: <%= @document.title if @document %></p>
     <p>content: <%= @document.content if @document %></p>
+    <p>Page number: <%= @document.pagenumber if @document %></p>
       <div id="document_show_notes_user">
         <% @document.users.each do |user| %>
           <li>user: <%= user.username if user %></li>

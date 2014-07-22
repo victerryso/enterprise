@@ -73,10 +73,10 @@ class DocumentsController < ApplicationController
 
 private
   def document_params
-    params.require(:document).permit(:title, :content)
+    params.require(:document).permit(:title, :content, :pagenumber)
   end
 
   def revision_params
-    params.require(:revision).permit(:title, :content, :document_id)
+    params.require(:revision).permit(:title, :content, :pagenumber, :document_id)
   end
 end
