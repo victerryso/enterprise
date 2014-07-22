@@ -18,6 +18,7 @@
 @import "bootstrap";
 
 #container {
+  min-height: 560px;
   margin: auto;
   text-align: center;
 }
@@ -47,6 +48,7 @@ nav ul h1 {
 }
 
 #hamburger {
+  z-index: 3;
   position: fixed;
   background-image: url('http://selfservice.dstv.com/images/menu-icon.png');
   background-size: cover;
@@ -57,10 +59,22 @@ nav ul h1 {
 #side-menu {
   display: none;
   position: fixed;
-  top: 100px;
   height: 1080px;
   width: 240px;
   background-color: rgba(0, 0, 0, 1);
   color: white;
   text-align: left;
+}
+
+footer {
+  background-color: white;
+  bottom: 0;
+  left: 0;
+  height: 160px;
+  margin: auto;
+  max-width: 960px;
+}
+
+footer li {
+  display: inline-block;
 }

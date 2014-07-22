@@ -1,12 +1,13 @@
 <!-- This displays the individual document and allows the user to edit or remove it.
 It also lists the relating revision number to the document -->
 
-<h2>Document <%= @document.id %></h2>
 <div class="documents_show">
   <div id="documents_show_notes">
-    <p>title: <%= @document.title if @document %></p>
-    <p>content: <%= @document.content if @document %></p>
-    <p>Page number: <%= @document.pagenumber if @document %></p>
+    <h2><%= @document.title%></h2>
+    <p><%= @document.content%></p>
+    <% if @document.pagenumber %>
+      <p>Page number: <%= @document.pagenumber %></p>
+    <% end %>
       <div id="document_show_notes_user">
         <% @document.users.each do |user| %>
           <li>user: <%= user.username if user %></li>
@@ -22,9 +23,11 @@ It also lists the relating revision number to the document -->
   </div>
 </div>
 
+<% if @current_user && @current_user.id == @document.user_id %>
   <div id="documents_show_menu">
     <ul>
       <li> • <%= link_to('edit', edit_document_path(@document)) %> • </li>
       <li><%= link_to('remove', @document, :data => {:confirm => 'are you sure?', :method => :delete }) %> • </li>
     </ul>
   </div><!-- documents_show_menu -->
+<% end %>

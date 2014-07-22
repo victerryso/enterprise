@@ -22,7 +22,7 @@ class DocumentsController < ApplicationController
   def create
       @document = Document.new document_params
       #Add document to current user  * has_and_belongs to many relationship
-      @document.users << @current_user
+      @document.user_id = @current_user.id
       @document.save
 
       flash[:notice] = "New document created."

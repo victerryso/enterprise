@@ -5,10 +5,13 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user
 
+  $documents = Document.all
+
   private
+
   def authenticate_user
     if session[:user_id].present?
-      @current_user = User.where(:id => session[:user_id]).first 
+      @current_user = User.where(:id => session[:user_id]).first
       # finding a user
     end
 
