@@ -1,0 +1,10 @@
+<!-- This displays all revisions -->
+
+<h2>Revisions</h2>
+<div class="revisions_index">
+<% @revisions.each do |revision| %>
+  <div id="revisions_index_inner">
+    <%= link_to(revision.title || '', revision) if revision %>
+  </div><!-- revisions_index_inner -->
+<% end %>
+</div><!-- revisions_index -->

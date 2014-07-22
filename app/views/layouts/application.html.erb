@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>enterprise</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+
+  <header class="navigation">
+    <%= render :partial => "/shared/nav_top"%>
+  </header>
+
+  <div id='hamburger'>
+  </div>
+
+  <div id='side-menu'>
+    <%= render :partial => "/shared/nav_side"%>
+  </div>
+
+  <div id="container">
+
+    <%= yield %>
+
+  </div>
+</body>
+</html>
