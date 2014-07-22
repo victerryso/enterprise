@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root :to => 'pages#homepage'
-  resources :users, :revisions
-  resources :documents do
+  resources :users, :revisions, :posts
+  resources :documents do 
     collection do
       get :export
     end
