@@ -11,4 +11,5 @@
 
 class Visual < ActiveRecord::Base
   belongs_to :documents
+  mount_uploader :image, ImageUploader
 end

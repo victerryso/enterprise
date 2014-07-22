@@ -1,15 +1,30 @@
 class DocumentsController < ApplicationController
   def index
+    # @revisions = Revision.all
     @documents = Document.all
-    @revisions = Revision.all
+    respond_to do |format|
+      format.html #index.html.erb
+      format.json { render json: @documents}
+    end
   end
+
+  def export
+    @documents = Document.all
+    send_data @documents.to_json, :filename => "documents.json"
+  end
+
+  # def import
+  #   post = DataFile.save(params[:upload])
+  #   render :text => "File has been uploaded successfully"
+  # end
+  # end
 
   def create
       @document = Document.new document_params
       #Add document to current user  * has_and_belongs to many relationship
       @document.users << @current_user
       @document.save
-      
+
       flash[:notice] = "New document created."
       redirect_to @document
   end
@@ -52,16 +67,16 @@ class DocumentsController < ApplicationController
     # revision = Revision.find params[:id]
     # # raise params.inspect
     # revision.destroy
-    
+
     redirect_to documents_path
   end
 
 private
   def document_params
-    params.require(:document).permit(:title, :content)
+    params.require(:document).permit(:title, :content, :pagenumber)
   end
 
   def revision_params
-    params.require(:revision).permit(:title, :content, :document_id)
+    params.require(:revision).permit(:title, :content, :pagenumber, :document_id)
   end
 end

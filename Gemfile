@@ -29,6 +29,18 @@ gem 'spring',        group: :development
 gem 'haml'
 gem 'bcrypt-ruby'
 gem 'bootstrap-sass'
+
+# File uploads
+gem 'carrierwave'
+
+# image post processing
+gem 'mini_magick'
+
+# for cloud storage
+gem 'cloudinary'
+
+gem 'json'
+
 gem 'rails_12factor', group: :production
 
 group :development do

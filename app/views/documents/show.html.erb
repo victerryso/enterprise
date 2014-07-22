@@ -6,24 +6,25 @@ It also lists the relating revision number to the document -->
   <div id="documents_show_notes">
     <p>title: <%= @document.title if @document %></p>
     <p>content: <%= @document.content if @document %></p>
+    <p>Page number: <%= @document.pagenumber if @document %></p>
       <div id="document_show_notes_user">
         <% @document.users.each do |user| %>
           <li>user: <%= user.username if user %></li>
         <% end %>
-      </div>      
+      </div>
       <ul>
         <li>This article has the following revisions:</li>
         <% @document.revisions.each do |revision| %>
-        <li>revision number <%= link_to revision.id, revision_path(revision) %> was last revised by 
+        <li>revision number <%= link_to revision.id, revision_path(revision) %> was last revised by
           <%= User.where(:id => revision.user_id).first.try(:username) %>.</li>
         <% end %>
       </ul>
   </div>
 </div>
 
-  <div id="documents_show_menu"> 
+  <div id="documents_show_menu">
     <ul>
-      <li> • <%= link_to('edit', edit_document_path(@document)) %> • </li>  
+      <li> • <%= link_to('edit', edit_document_path(@document)) %> • </li>
       <li><%= link_to('remove', @document, :data => {:confirm => 'are you sure?', :method => :delete }) %> • </li>
     </ul>
   </div><!-- documents_show_menu -->

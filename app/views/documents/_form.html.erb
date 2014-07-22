@@ -10,6 +10,17 @@
       <%= f.label :content, "document content" %>
       <%= f.text_area :content, :placeholder => "Enter the document's content here .." %>
     </p>
+    <p>
+      <%= f.label :pagenumber, "Page number" %>
+      <%= f.number_field :pagenumber, in: 1...99999 %>
+    </p>
+
+<!--     <p>
+      <%#= f.label :image %>
+      <%#= f.file_field :image %>
+      <%#= f.hidden_field :image_cache %>
+      <%#= button_tag 'Upload' %>
+    </p> -->
 
   <div id="document_form_button">
     <%= f.submit 'Submit' %>

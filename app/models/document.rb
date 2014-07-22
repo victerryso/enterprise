@@ -8,11 +8,13 @@
 #  user_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  pagenumber :integer
 #
 
 class Document < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :visuals
-  has_many :revisions
+  has_many :revisions, :dependent => :destroy
   validates :title, :presence => true
+  validates :pagenumber, :presence => true
 end

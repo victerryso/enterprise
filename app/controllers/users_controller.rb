@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   before_action :check_if_logged_in, :except => [:new, :create]
-
-
   def index
     @users = User.all
   end
@@ -36,13 +34,11 @@ class UsersController < ApplicationController
 
     redirect_to user
   end
-
   def destroy
     user = User.find params[:id]
     user.destroy
 
     flash[:notice] = "User account is now deleted."
-
     redirect_to root_path
   end
 
