@@ -47,11 +47,11 @@ private
     params.require(:user).permit(:username, :avatar, :password, :password_confirmation)
   end
 
-  def check_if_logged_in
-    redirect_to(new_user_path) if @current_user.nil?
-  end
+  # def check_if_logged_in
+  #   redirect_to(new_user_path) if @current_user.nil?
+  # end
 
-  def check_if_admin
-    redirect_to(root_path) if @current_user.is_admin?
-  end
+  # def check_if_admin
+  #   redirect_to(root_path) if @current_user.is_admin?
+  # end
 end
