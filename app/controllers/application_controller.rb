@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
   private
 
   def fetch_documents
-    @all_documents = Document.all
+    @all_documents = Document.order(:pagenumber)
+
   end
 
   def authenticate_user

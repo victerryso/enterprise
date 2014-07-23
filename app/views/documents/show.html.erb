@@ -5,10 +5,10 @@ It also lists the relating revision number to the document -->
 <div class="documents_show">
   <div id="documents_show_notes">
 
-    <h2><%= @document.title%></h2>
-    <p><%= markdown @document.content%></p>
+    <h2><%= markdown @document.title if @document%></h2>
+    <p><%= markdown @document.content if @document%></p>
     <% if @document.pagenumber %>
-      <p>Page number: <%= @document.pagenumber %></p>
+      <p>Page number: <%= @document.pagenumber%></p>
     <% end %>
 
       <div id="document_show_notes_user">
@@ -16,9 +16,6 @@ It also lists the relating revision number to the document -->
           <li>user: <%= @document.user.username if @document.user %></li>
       </div>
 
-    <p>title: <%= @document.title if @document %></p>
-    <p>content: <%= @document.content if @document %></p>
-    <p>Page number: <%= @document.pagenumber if @document %></p>
 
     <% @document.visuals.each do |visual| %>
     <div>
@@ -42,7 +39,7 @@ It also lists the relating revision number to the document -->
 <% if @current_user && @current_user.id == @document.user_id %>
   <div id="documents_show_menu">
     <ul>
-      <li>&bullet; <%= link_to('edit', edit_document_path(@document)) %> &bullet;</li>  
+      <li>&bullet; <%= link_to('edit', edit_document_path(@document)) %> &bullet;</li>
       <li><%= link_to('remove', @document, :data => {:confirm => 'Remove document?', :method => :delete }) %> &bullet;</li>
     </ul>
     <%= paginate @documents %>
