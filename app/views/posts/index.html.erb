@@ -1,34 +1,42 @@
 <div class='empty-black'></div>
 
 <h1> Forum Feed </h1>
-
+    <% if @search %>
 <ul>
 
+    <% @posts.each do |post| %>
 
-  <% @posts.reverse.each do |post| %>
+        <h1 class="article-title"><%= link_to post.title, post %></h1>
+        <p class="article-content"><%= post.body %></p>
+        <p><li> <%= link_to('Back to Search', roots_path ) %></li></p>
+
+    <% end %>
 
 
-  <div class="userfont">
+  <% else %>
 
-        <% if post.user %>
-          <li>User: <%= link_to(post.user.username, post_path(post)) %> </li>
-           <% else %>
-             <li>User: <%= post.username  %> </li>
+      <% @posts.reverse.each do |post| %>
+
+
+          <% if post.user %>
+              <li>User: <%= link_to(post.user.username, post_path(post)) %> </li>
+          <% else %>
+
+            <li>User: <%= post.username  %> </li>
           <% end %>
 
            <div class="truncate">
 
-                 <li>Title: <%= link_to(truncate(raw(post.title)), post_path(post), escape: false) %></li>
+            <li>Title: <%= link_to(truncate(raw(post.title)), post_path(post), escape: false) %></li>
 
+            <li>Post: <%= truncate(raw(post.body), escape: false) %> </li>
 
-                <li>Post: <%= truncate(raw(post.body), escape: false) %> </li>
-          </div>
 
             <li> <%= link_to('Create a new Forum', new_post_path) %></li>
 
-     <%= link_to'Delete', post , :class => 'delete',:method => :delete, :confirm => "Are you sure you want to delete this Post?" %>
+           <%= link_to'Delete', post , :class => 'delete',:method => :delete, :confirm => "Are you sure you want to delete this Post?" %>
 
-<hr>
+          <hr>
+    <% end %>
 
-
-   <% end %>
+<% end %>
