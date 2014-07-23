@@ -1,7 +1,26 @@
 .front-page {
-  background-image: image_url('http://hdwallimg.com/wp-content/uploads/2014/02/Black-White-City-Wallpaper-1600x1200.png');
   background-size: cover;
   width: 100%;
+}
+
+#home-page {
+  background-image: url(/assets/front_home.png);
+}
+
+#about-page {
+  background-image: url(/assets/front_about.jpg);
+}
+
+#contact-page {
+  background-image: url(/assets/front_contact.jpg);
+}
+
+#employees-page {
+  background-image: url(/assets/front_employees.jpg);
+}
+
+#info-page {
+  background-image: url(/assets/front_info.jpg);
 }
 
 .intro {
@@ -31,34 +50,50 @@ p {
 .box {
   text-align: center;
   height: 240px;
-  width: 240px;
+  width: 360px;
   margin: 1em;
   display: inline-block;
   border: 2px solid black;
   background-size: cover;
-  border-radius: 100%;
+  line-height: 240px;
+}
+
+.box-heading {
+  display: inline-block;
 }
 
 #box1 {
-  background-image: url('http://gamesloveres.com/wp-content/uploads/2014/03/cute-pokemon-charmandercharmander-by-inversidom-riot-on-deviantart-llfutuct.png')
+  background-image: url(/assets/quick_1.png)
 }
 
 #box2 {
-  background-image: url('http://gamesloveres.com/wp-content/uploads/2014/03/cute-pokemon-charmandercharmander-by-inversidom-riot-on-deviantart-llfutuct.png')
+  background-image: url(/assets/quick_2.png)
 }
 
 #box3 {
-  background-image: url('http://gamesloveres.com/wp-content/uploads/2014/03/cute-pokemon-charmandercharmander-by-inversidom-riot-on-deviantart-llfutuct.png')
+  background-image: url(/assets/quick_3.png)
 }
 
 #box4 {
-  background-image: url('http://gamesloveres.com/wp-content/uploads/2014/03/cute-pokemon-charmandercharmander-by-inversidom-riot-on-deviantart-llfutuct.png')
+  background-image: url(/assets/quick_4.png)
 }
 
-.forum {
-  height: 600px;
-  background-color: black;
-  color: white;
-  padding: 2em;
+.profile {
+  width: 400px;
+  border: 2px solid black;
+  display: inline-block;
+  margin: 0.5em;
 }
 
+.profile > img {
+  max-width: 200px;
+}
+
+.content {
+  max-width: 960px;
+  margin: auto;
+}
+
+label, input {
+  margin: 0.5em;
+}

@@ -1,18 +1,19 @@
+<div class='empty-black'></div>
 
-<h1 ><%= link_to(@post.user.username, @post.user) if @post.user %></h1>	
+<h1 ><%= link_to(@post.user.username, @post.user) if @post.user %></h1>
 
 
 
 <ul>
 
    <hr>
-        
 
-       
+
+
 		<li>Title: <%= @post.title %></li><br>
-        
+
 		<li> <%= raw(@post.body) %></li>
-	    
+
 
 		<li><%= image_tag(@post.image, :class => 'xthumb') %></li>
 
@@ -21,7 +22,7 @@
 
 		<li> <%= link_to('Create a new Forum', new_post_path) %></li>
 
-		<li><%= link_to " Back to Forum feed", posts_path %></li> 
+		<li><%= link_to " Back to Forum feed", posts_path %></li>
 
 
 

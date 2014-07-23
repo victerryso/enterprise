@@ -1,6 +1,4 @@
-<div class='front-page'>
-
-</div>
+<div class='front-page' id='home-page'></div>
 
 <div class='intro'>
   <h2>EndeavourTM (International) Limited</h2>
@@ -11,15 +9,17 @@
 
 
 <div class='content-boxes'>
-  <h2>Boxes</h2>
-  <div class='box' id='box1'></div>
-  <div class='box' id='box2'></div>
-  <div class='box' id='box3'></div>
-  <div class='box' id='box4'></div>
+  <h2>Quick Links</h2>
+  <%= link_to root_path do %>
+    <div class='box' id='box1'><h3>Corporate Information</h3></div>
+  <% end %>
+  <%= link_to root_path do %>
+    <div class='box' id='box2'><h3>Directors' Report</h3></div>
+  <% end %>
+  <%= link_to root_path do %>
+    <div class='box' id='box3'><h3>Financial Statements</h3></div>
+  <% end %>
+  <%= link_to root_path do %>
+    <div class='box' id='box4'><h3>Appendix</h3></div>
+  <% end %>
 </div>
-
-<div class='forum'>
-  <h2>Forum</h2>
-  <%= link_to('forum stuff', posts_path) %>
-</div>
-

@@ -4,10 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :authenticate_user
-
-  $documents = Document.all
+  before_action :fetch_documents
 
   private
+
+  def fetch_documents
+    @documents = Document.all
+  end
 
   def authenticate_user
     if session[:user_id].present?

@@ -37,9 +37,9 @@ nav li {
   border-left: 1px solid #888;
 }
 
-#final-link {
-  border-right: 1px solid #888;
-}
+// #final-link {
+//   border-right: 1px solid #888;
+// }
 
 nav ul h1 {
   text-align: left;
@@ -77,8 +77,14 @@ footer {
   height: 160px;
   margin: auto;
   max-width: 960px;
+  border-top: 1px solid grey;
 }
 
 footer li {
   display: inline-block;
+}
+
+.empty-black {
+  height: 100px;
+  background-color: black;
 }
