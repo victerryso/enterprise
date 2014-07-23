@@ -1,16 +1,16 @@
 class PostsController < ApplicationController
 
    def index
-          
+
       @posts = Post.all
-      
+
       if params[:search]
       @posts = Post.search(params[:search]).order("created_at DESC")
         else
       @posts = Post.order("created_at DESC")
      end
 
-   end 
+   end
 
    def create
     post = Post.new post_params
@@ -34,19 +34,20 @@ class PostsController < ApplicationController
 
       def show
         @post = Post.find params[:id]
+        @comments = Comment.where :post_id => params[:id]
       end
-      
+
       def update
-        post = Post.find params[:id] 
+        post = Post.find params[:id]
         post.update post_params
         redirect_to post
       end
-      
+
       def destroy
-        post = Post.find params[:id] 
+        post = Post.find params[:id]
         post.destroy
         redirect_to posts_path
-      
+
       end
 
 
