@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   private
 
   def fetch_documents
-    @documents = Document.all
+    @all_documents = Document.all
   end
 
   def authenticate_user

@@ -44,6 +44,11 @@ gem 'json'
 
 gem 'rails_12factor', group: :production
 
+# for markdown
+gem 'markdown-rails'
+gem 'redcarpet'
+gem 'kaminari'
+
 group :development do
   gem 'pry-rails'
   gem 'better_errors'

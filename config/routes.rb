@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root :to => 'pages#homepage'
-
   resources :users, :revisions
   resources :documents do
    collection do

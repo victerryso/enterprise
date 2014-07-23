@@ -1,0 +1,25 @@
+<<<<<<< HEAD
+<!-- This is the navigator for new document, document index, classifications index and revisions index -->
+
+<ul>
+  <% if @current_user %>
+    <li><%= link_to('new document', new_document_path) %></li>
+    <span class="navigationSpace"/>
+
+    <li><%= link_to('documents', documents_path) %></li>
+    <span class="navigationSpace"/>
+
+    <li><%= link_to('revisions', revisions_path) %></li>
+    <span class="navigationSpace"/>
+
+    <li><%= link_to('Forum', new_post_path) %></li>
+    <span class="navigationSpace"/>
+
+    <% if @current_user.try(:is_admin) %>
+      <li><%= link_to('view users', users_path) %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+=======
+>>>>>>> fd2fd7792389f86bcb117f6aed1dd66504a99147

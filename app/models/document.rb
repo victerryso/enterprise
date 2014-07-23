@@ -16,5 +16,5 @@ class Document < ActiveRecord::Base
   has_many :visuals
   has_many :revisions, :dependent => :destroy
   validates :title, :presence => true
-  validates :pagenumber, :presence => true
+  # validates :pagenumber, :presence => true
 end

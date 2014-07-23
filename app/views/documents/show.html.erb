@@ -5,7 +5,7 @@ It also lists the relating revision number to the document -->
 <div class="documents_show">
   <div id="documents_show_notes">
     <h2><%= @document.title%></h2>
-    <p><%= @document.content%></p>
+    <p><%= markdown @document.content%></p>
     <% if @document.pagenumber %>
       <p>Page number: <%= @document.pagenumber %></p>
     <% end %>
@@ -30,5 +30,7 @@ It also lists the relating revision number to the document -->
       <li> • <%= link_to('edit', edit_document_path(@document)) %> • </li>
       <li><%= link_to('remove', @document, :data => {:confirm => 'are you sure?', :method => :delete }) %> • </li>
     </ul>
+    <%= paginate @documents %>
   </div><!-- documents_show_menu -->
 <% end %>
+
