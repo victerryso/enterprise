@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root :to => 'pages#homepage'
-  resources :users, :revisions
+
+  resources :users, :revisions, :visuals
   resources :documents do
    collection do
     get :export
@@ -8,8 +9,8 @@ Rails.application.routes.draw do
    end
 
   resources :posts do
-  resources :comments
-end
+   resources :comments
+  end
 
   get '/about' => 'pages#about', :as => :about
   get '/contact' => 'pages#contact', :as => :contact
