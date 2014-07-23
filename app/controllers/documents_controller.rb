@@ -41,6 +41,8 @@ class DocumentsController < ApplicationController
   def show
     @document = Document.find params[:id]
     @users = User.all
+    @documents = Document.page(params[:page]).per(1)
+    @document = Document.find params[:page] if params[:page]
   end
 
   def update

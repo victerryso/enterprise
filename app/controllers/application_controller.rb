@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user
 
   $documents = Document.all
+  $documents.order(:page)
 
   private
 
