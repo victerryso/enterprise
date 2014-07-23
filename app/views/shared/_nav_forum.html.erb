@@ -1,0 +1,11 @@
+<h4>FORUM</h4>
+
+<!-- When submit the form, the view rendered will be the index view of our articles resource -->
+<%= form_tag(posts_path, :method => "get", :class => "navbar-form", :id => "search-form") do %>
+  <%= text_field_tag :search, params[:search], :placeholder => "Search Articles" %>
+    <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
+         of using a Rails form helper -->
+  <button class="btn" type="submit"><i class="icon-search"></i></button>
+<% end %>
+
+<%= link_to('View Forum', posts_path) %>

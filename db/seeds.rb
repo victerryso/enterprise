@@ -10,3 +10,10 @@ u2 = User.create(:username => 'quma', :avatar => 'https://cdn2.content.compendiu
 
  Post.create(:title => 'The Flight of the Dragonfly in Front of the Sun', :body => 'Lorem ipsum dolor sit amet, est ei rebum inani tempor, no pro adhuc movet. Ea vim solet dictas offendit, nam dolorem invenire at. Est et inermis repudiare, eu quo phaedrum constituam, quo quodsi causae deleniti in. Ne omnes decore delicatissimi his, ei regione appetere has. An audire nostrum nec, ne graeci mnesarchum sententiae sed, nec ex principes imperdiet. Mazim graeco lucilius ad vix.', :image => 'http://uploads0.wikipaintings.org/images/joan-miro/the-flight-of-the-dragonfly-in-front-of-the-sun.jpg')
 
+
+
+
+
+
+
+
