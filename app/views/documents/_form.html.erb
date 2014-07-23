@@ -1,4 +1,6 @@
-<!-- This is the document form template -->
+<!-- This is the document form template, including nested Visuals form  -->
+
+<%= @document.errors.full_messages %>
 
 <div class="document_form">
   <%= form_for @document do |f| %>
@@ -13,15 +15,17 @@
     <p>
       <%= f.label :pagenumber, "Page number" %>
       <%= f.number_field :pagenumber, in: 1...99999 %>
-    </p>
-    
-<!--     <p>
-      <%#= f.label :image %>
-      <%#= f.file_field :image %>
-      <%#= f.hidden_field :image_cache %>
-      <%#= button_tag 'Upload' %>
-    </p> -->
-    
+    </p> 
+
+    <h3>Add Images to Document</h3>
+    <div id="add_images_form">
+      <%= f.fields_for :visuals do |visual| %>
+        <%= render 'visual_fields', :f => visual %>
+      <% end %>
+    </div><!-- add_images_form -->
+    <div class="add_images_links">
+      <%= link_to_add_association 'add visual', f, :visuals %>
+    </div><!-- add_images_link -->
   <div id="document_form_button">
     <%= f.submit 'Submit' %>
   </div>

@@ -7,10 +7,16 @@ It also lists the relating revision number to the document -->
     <p>title: <%= @document.title if @document %></p>
     <p>content: <%= @document.content if @document %></p>
     <p>Page number: <%= @document.pagenumber if @document %></p>
+
+    <% @document.visuals.each do |visual| %>
+    <div>
+      <p><%= visual.title %></p>
+      <%= image_tag visual.image_url(:thumb) if visual.image %>
+      <%= link_to 'delete', visual, :data =>{:confirm => 'Remove image?', :method => :delete} %>
+    </div>
+  <% end %>
+
       <div id="document_show_notes_user">
-        <% @document.users.each do |user| %>
-          <li>user: <%= user.username if user %></li>
-        <% end %>
       </div>      
       <ul>
         <li>This article has the following revisions:</li>
@@ -18,13 +24,13 @@ It also lists the relating revision number to the document -->
         <li>revision number <%= link_to revision.id, revision_path(revision) %> was last revised by 
           <%= User.where(:id => revision.user_id).first.try(:username) %>.</li>
         <% end %>
-      </ul>
-  </div>
-</div>
+      </ul> 
+  </div><!-- documents_show_notes -->
+</div><!-- documents_show -->
 
   <div id="documents_show_menu"> 
     <ul>
-      <li> • <%= link_to('edit', edit_document_path(@document)) %> • </li>  
-      <li><%= link_to('remove', @document, :data => {:confirm => 'are you sure?', :method => :delete }) %> • </li>
+      <li>&bullet; <%= link_to('edit', edit_document_path(@document)) %> &bullet;</li>  
+      <li><%= link_to('remove', @document, :data => {:confirm => 'Remove document?', :method => :delete }) %> &bullet;</li>
     </ul>
-  </div><!-- documents_show_menu -->
+  </div><!-- documents_show_menu

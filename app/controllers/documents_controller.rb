@@ -1,10 +1,9 @@
 class DocumentsController < ApplicationController
   def index
-    # @revisions = Revision.all
     @documents = Document.all
     respond_to do |format|
       format.html #index.html.erb
-      format.json { render json: @documents}
+      format.json { render json: @documents }
     end
   end
 
@@ -22,11 +21,14 @@ class DocumentsController < ApplicationController
   def create
       @document = Document.new document_params
       #Add document to current user  * has_and_belongs to many relationship
-      @document.users << @current_user
-      @document.save
-      
-      flash[:notice] = "New document created."
-      redirect_to @document
+      @document.user = @current_user
+      if @document.save
+        flash[:notice] = "New document created."
+        redirect_to @document
+      else    
+        flash[:notice] = "Did not successfully create new document"
+        render :new
+      end
   end
 
   def new
@@ -41,6 +43,9 @@ class DocumentsController < ApplicationController
   def show
     @document = Document.find params[:id]
     @users = User.all
+    # would write @visuals = @document.visuals
+    # if didn't include document.visuals through associations on view page
+    # but is highly more preferable to effectively use associations
   end
 
   def update
@@ -63,20 +68,22 @@ class DocumentsController < ApplicationController
   def destroy
     document = Document.find params[:id]
     document.destroy
-
+    # see model file for document, destroy all document dependent that includes revision
     # revision = Revision.find params[:id]
     # # raise params.inspect
     # revision.destroy
-    
     redirect_to documents_path
   end
 
 private
   def document_params
-    params.require(:document).permit(:title, :content, :pagenumber)
+    params.require(:document).permit(:title, :content, :pagenumber, 
+                                      visuals_attributes: 
+                                      [:id, :title, :_destroy, :image, :image_cache, :remote_image_url])
   end
 
   def revision_params
-    params.require(:revision).permit(:title, :content, :pagenumber, :document_id)
+    params.require(:revision).permit(:title, :content, :pagenumber, :document_id, 
+                                      visuals_attributes: [:id, :title, :_destroy])
   end
 end

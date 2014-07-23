@@ -1,3 +1,22 @@
+.prehome span {
+    position: absolute;
+    bottom: 3em;
+    left: calc(50% - 25px);
+    content: "";
+    width: 50px;
+    height: 50px;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIyOCI+PHBvbHlnb24gZmlsbD0iI2ZmZiIgcG9pbnRzPSI1LjAwMiwyOCAxMCwyMiA1Ljk0OSwyMiA1Ljk0OSwwIDMuOTQ5LDAgMy45NDksMjIgMCwyMiIvPjwvc3ZnPg==') no-repeat scroll center center transparent;
+animation-duration: 1s;
+animation-name: prehome;
+animation-timing-function: ease-in-out;
+animation-fill-mode: forwards;
+animation-iteration-count: infinite;
+transition: opacity 0.3s ease-in-out 0s;
+opacity: 1;
+cursor: pointer;
+  }
+
+  
 .thumb {
   max-width: 8em;
   border: 2px solid;

@@ -40,6 +40,8 @@ gem 'cloudinary'
 
 gem 'json'
 
+gem 'cocoon'
+
 gem 'rails_12factor', group: :production
 
 group :development do
