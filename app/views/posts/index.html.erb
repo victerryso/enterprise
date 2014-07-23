@@ -1,42 +1,22 @@
 <div class='empty-black'></div>
 
 <h1> Forum Feed </h1>
-    <% if @search %>
-<ul>
-
+  <% if @search %>
     <% @posts.each do |post| %>
-
-        <h1 class="article-title"><%= link_to post.title, post %></h1>
-        <p class="article-content"><%= post.body %></p>
-        <p><li> <%= link_to('Back to Search', roots_path ) %></li></p>
-
+      <h1 class="article-title"><%= link_to post.title, post %></h1>
+      <p class="article-content"><%= post.body %></p>
+      <p><li> <%= link_to('Back to Search', roots_path ) %></li></p>
     <% end %>
-
 
   <% else %>
 
-      <% @posts.reverse.each do |post| %>
+    <p><%= link_to('Create a new Forum', new_post_path) %></p>
 
-
-          <% if post.user %>
-              <li>User: <%= link_to(post.user.username, post_path(post)) %> </li>
-          <% else %>
-
-            <li>User: <%= post.username  %> </li>
-          <% end %>
-
-           <div class="truncate">
-
-            <li>Title: <%= link_to(truncate(raw(post.title)), post_path(post), escape: false) %></li>
-
-            <li>Post: <%= truncate(raw(post.body), escape: false) %> </li>
-
-
-            <li> <%= link_to('Create a new Forum', new_post_path) %></li>
-
-           <%= link_to'Delete', post , :class => 'delete',:method => :delete, :confirm => "Are you sure you want to delete this Post?" %>
-
-          <hr>
-    <% end %>
+    <% @posts.reverse.each do |post| %>
+      <%= link_to(truncate(raw(post.title)), post_path(post), escape: false) %>
+      <li><%= truncate(raw(post.body), escape: false) %> </li>
+      <%= link_to'Delete', post , :class => 'delete',:method => :delete, :confirm => "Are you sure you want to delete this Post?" %>
+    <hr>
+  <% end %>
 
 <% end %>
