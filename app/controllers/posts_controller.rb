@@ -14,6 +14,7 @@ class PostsController < ApplicationController
 
    def create
     post = Post.new post_params
+    post.user = @current_user
     if @current_user.nil?
       redirect_to root_path
     else
@@ -34,6 +35,7 @@ class PostsController < ApplicationController
 
       def show
         @post = Post.find params[:id]
+        @comments = Comment.where :post_id => params[:id]
       end
       
       def update
