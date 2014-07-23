@@ -29,6 +29,7 @@ gem 'spring',        group: :development
 gem 'haml'
 gem 'bcrypt-ruby'
 gem 'bootstrap-sass'
+gem 'geocoder'
 
 # File uploads
 gem 'carrierwave'

@@ -3,7 +3,8 @@
 <h2>Documents</h2>
 
 <ul>
-  <% $documents.each do |document| %>
+
+  <% @documents.each do |document| %>
     <li><%= link_to(document.title, document_path(document, :page => document.id)) %></li>
   <% end %>
 </ul>

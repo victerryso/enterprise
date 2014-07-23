@@ -1,27 +1,40 @@
+<div class='empty-black'></div>
 
-<h1 ><%= link_to(@post.user.username, @post.user) if @post.user %></h1>	
+<h1 ><%= link_to(@post.user.username, @post.user) if @post.user %></h1>
 
 
 
 <ul>
 
    <hr>
-        
 
-       
+
+
 		<li>Title: <%= @post.title %></li><br>
-        
+
 		<li> <%= raw(@post.body) %></li>
-	    
+
 
 		<li><%= image_tag(@post.image, :class => 'xthumb') %></li>
 
 		<%= link_to'Edit |', edit_post_path %>
 		<%= link_to'Delete', @post, :method => :delete, :confirm => "Are you sure you want to delete this Post?" %></p>
 
+						<h2>Forum Comments</h2>
+						   
+						   <%= render @post.comments %>
+ 
+						<h2>Add to Forum:</h2>
+
+							<%= render "comments/form" %>
+						
+ 
+<br />
+
+		
 		<li> <%= link_to('Create a new Forum', new_post_path) %></li>
 
-		<li><%= link_to " Back to Forum feed", posts_path %></li> 
+		<li><%= link_to " Back to Forum feed", posts_path %></li>
 
 
 
