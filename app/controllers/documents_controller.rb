@@ -5,6 +5,13 @@ class DocumentsController < ApplicationController
       format.html #index.html.erb
       format.json { render json: @documents }
     end
+
+    if params[:search]
+      @doc_search = Document.search(params[:search]).order("created_at DESC")
+    else
+      @doc_search = Document.order("created_at DESC")
+    end
+
   end
 
   def export
@@ -25,7 +32,7 @@ class DocumentsController < ApplicationController
       if @document.save
         flash[:notice] = "New document created."
         redirect_to @document
-      else    
+      else
         flash[:notice] = "Did not successfully create new document"
         render :new
       end
@@ -81,13 +88,13 @@ class DocumentsController < ApplicationController
 
 private
   def document_params
-    params.require(:document).permit(:title, :content, :pagenumber, 
-                                      visuals_attributes: 
+    params.require(:document).permit(:title, :content, :pagenumber,
+                                      visuals_attributes:
                                       [:id, :title, :_destroy, :image, :image_cache, :remote_image_url])
   end
 
   def revision_params
-    params.require(:revision).permit(:title, :content, :pagenumber, :document_id, 
+    params.require(:revision).permit(:title, :content, :pagenumber, :document_id,
                                       visuals_attributes: [:id, :title, :_destroy])
   end
 end
