@@ -4,23 +4,23 @@
 }
 
 #home-page {
-  background-image: url(/assets/front_home.png);
+  background-image: image-url('front_home.png');
 }
 
 #about-page {
-  background-image: url(/assets/front_about.jpg);
+  background-image: image-url('front_about.jpg');
 }
 
 #contact-page {
-  background-image: url(/assets/front_contact.jpg);
+  background-image: image-url('front_contact.jpg');
 }
 
 #employees-page {
-  background-image: url(/assets/front_employees.jpg);
+  background-image: image-url('front_employees.jpg');
 }
 
 #info-page {
-  background-image: url(/assets/front_info.jpg);
+  background-image: image-url('front_info.jpg');
 }
 
 .intro {
@@ -63,19 +63,19 @@ p {
 }
 
 #box1 {
-  background-image: url(/assets/quick_1.png)
+  background-image: image-url('quick_1.png');
 }
 
 #box2 {
-  background-image: url(/assets/quick_2.png)
+  background-image: image-url('quick_2.png');
 }
 
 #box3 {
-  background-image: url(/assets/quick_3.png)
+  background-image: image-url('quick_3.png');
 }
 
 #box4 {
-  background-image: url(/assets/quick_4.png)
+  background-image: image-url('quick_4.png');
 }
 
 .profile {

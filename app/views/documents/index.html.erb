@@ -1,21 +1,21 @@
 <div class='empty-black'></div>
 
-<h2>Documents</h2>
+<div class='main'>
 
-<p>
-<% if @current_user.try(:is_admin) %>
-  <li><%= link_to('export to json',export_documents_path) %></li>
-<% end %>
-</p>
+  <h2>Documents</h2>
 
-<div class="documents_index">
-<% @documents.each do |document| %>
-  <div id="documents_index_inner">
-    <h3><%= link_to(document.title, document_path(document)) if document.title %></h3>
-    <p> - <%= document.content if document.content %></p>
-  </div><!-- documents_index_inner -->
-<% end %>
-</div><!-- documents_index -->
+  <p>
+  <% if @current_user.try(:is_admin) %>
+    <li><%= link_to('export to json',export_documents_path) %></li>
+  <% end %>
+  </p>
 
+  <div class="documents_index">
+  <% @documents.each do |document| %>
+    <div id="documents_index_inner">
+      <h3><%= link_to(document.title, document_path(document)) if document.title %></h3>
+    </div><!-- documents_index_inner -->
+  <% end %>
+  </div><!-- documents_index -->
 
-
+</div>

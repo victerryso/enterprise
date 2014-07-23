@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
   private
 
   def fetch_documents
-    @all_documents = Document.all
+    @all_documents = Document.order(:pagenumber)
+
   end
 
   def authenticate_user
@@ -22,4 +23,14 @@ class ApplicationController < ActionController::Base
       session[:user_id] = nil
     end
   end
+
+  def search_documents
+    if params[:search]
+      @doc_search = Document.search(params[:search]).order("created_at DESC")
+    else
+      @doc_search = Document.order("created_at DESC")
+    end
+  end
+
 end
+

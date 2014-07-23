@@ -45,7 +45,20 @@ $(document).ready( function () {
 
 //////////////////////////////////////////////////
 
+// $(document).on({
+//   "contextmenu": function(e) {
+//     e.preventDefault();
+//   },
 
+//   "mousedown": function(e) {
+//     e.preventDefault();
+//   },
+
+//   "mouseup": function(e) {
+//     e.preventDefault();
+//   }
+
+// });
 
 });
 

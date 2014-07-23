@@ -20,7 +20,7 @@
 #container {
   min-height: 560px;
   margin: auto;
-  text-align: center;
+  // text-align: center;
 }
 
 header {
@@ -62,11 +62,15 @@ nav ul h1 {
   height: 1080px;
   width: 240px;
   background-color: rgba(0, 0, 0, 1);
-  color: white;
   text-align: left;
 }
 
 p {
+  margin: auto;
+}
+
+.main {
+  max-width: 960px;
   margin: auto;
 }
 
@@ -75,7 +79,7 @@ footer {
   bottom: 0;
   left: 0;
   height: 160px;
-  margin: auto;
+  margin: 1em auto;
   max-width: 960px;
   border-top: 1px solid grey;
 }

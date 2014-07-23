@@ -2,49 +2,50 @@
 It also lists the relating revision number to the document -->
 <div class='empty-black'></div>
 
-<div class="documents_show">
-  <div id="documents_show_notes">
+<div class='main'>
 
-    <h2><%= @document.title%></h2>
-    <p><%= markdown @document.content%></p>
-    <% if @document.pagenumber %>
-      <p>Page number: <%= @document.pagenumber %></p>
+  <div class="documents_show">
+    <div id="documents_show_notes">
+
+    <!--showing document title and contents -->
+      <h2><%= @document.title if @document%></h2>
+      <p><%= markdown @document.content if @document%></p>
+      <% if @document.pagenumber %>
+        <p>Page number: <%= @document.pagenumber %></p>
+      <% end %>
+
+        <div id="document_show_notes_user">
+
+            <li>user: <%= @document.user.username if @document.user %></li>
+        </div>
+
+      <% @document.visuals.each do |visual| %>
+      <div>
+        <p><%= visual.title %></p>
+        <%= image_tag visual.image_url(:thumb) if visual.image %>
+        <%= link_to 'delete', visual, :data =>{:confirm => 'Remove image?', :method => :delete} %>
+      </div>
     <% end %>
 
-      <div id="document_show_notes_user">
+        <ul>
+          <li>This article has the following revisions:</li>
+          <% @document.revisions.each do |revision| %>
+          <li>revision number <%= link_to revision.id, revision_path(revision) %> was last revised by
+            <%= User.where(:id => revision.user_id).first.try(:username) %>.</li>
+          <% end %>
+        </ul>
 
-          <li>user: <%= @document.user.username if @document.user %></li>
-      </div>
+    </div><!-- documents_show_notes -->
+  </div><!-- documents_show -->
 
-    <p>title: <%= @document.title if @document %></p>
-    <p>content: <%= @document.content if @document %></p>
-    <p>Page number: <%= @document.pagenumber if @document %></p>
-
-    <% @document.visuals.each do |visual| %>
-    <div>
-      <p><%= visual.title %></p>
-      <%= image_tag visual.image_url(:thumb) if visual.image %>
-      <%= link_to 'delete', visual, :data =>{:confirm => 'Remove image?', :method => :delete} %>
-    </div>
+  <% if @current_user && @current_user.id == @document.user_id %>
+    <div id="documents_show_menu">
+      <ul>
+        <li>&bullet; <%= link_to('edit', edit_document_path(@document)) %> &bullet;</li>
+        <li><%= link_to('remove', @document, :data => {:confirm => 'Remove document?', :method => :delete }) %> &bullet;</li>
+      </ul>
+      <%= paginate @documents %>
+    </div><!-- documents_show_menu -->
   <% end %>
 
-      <ul>
-        <li>This article has the following revisions:</li>
-        <% @document.revisions.each do |revision| %>
-        <li>revision number <%= link_to revision.id, revision_path(revision) %> was last revised by
-          <%= User.where(:id => revision.user_id).first.try(:username) %>.</li>
-        <% end %>
-      </ul>
-
-  </div><!-- documents_show_notes -->
-</div><!-- documents_show -->
-
-<% if @current_user && @current_user.id == @document.user_id %>
-  <div id="documents_show_menu">
-    <ul>
-      <li>&bullet; <%= link_to('edit', edit_document_path(@document)) %> &bullet;</li>  
-      <li><%= link_to('remove', @document, :data => {:confirm => 'Remove document?', :method => :delete }) %> &bullet;</li>
-    </ul>
-    <%= paginate @documents %>
-  </div><!-- documents_show_menu -->
-<% end %>
+</div>

@@ -1,4 +1,3 @@
-
 User.destroy_all
 Document.destroy_all
 # Revision.destroy_all
