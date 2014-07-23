@@ -11,5 +11,9 @@
 <% if @current_user %>
   <%= link_to('Create New Document', new_document_path) %>
 <% end %>
-<!-- Essentially, this will be an each loop going through all the documents and listing them by their titles -->
+
+<%= form_tag(documents_path, :method => "get") do %>
+  <%= text_field_tag :search, params[:search], :placeholder => "Search Documents" %>
+  <button type="submit"><i class="icon-search"></i></button>
+<% end %>
 

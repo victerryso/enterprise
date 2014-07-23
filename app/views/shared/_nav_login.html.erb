@@ -1,0 +1,21 @@
+<% if @current_user %>
+  <h4>HI <%= @current_user.username.upcase %></h4>
+  <p><%= link_to('View Profile', user_path(@current_user)) %></p>
+  <p><%= link_to('Log Out', login_path, :data => {:method => :delete, :confirm => 'Really logout?'}) %></p>
+<% else %>
+  <h4>LOG IN</h4>
+  <div class="login_form">
+  <%= form_tag '/login' do %>
+    <p>
+      <%= label_tag 'username' %>
+      <%= text_field_tag 'username', nil %>
+    </p>
+    <p>
+      <%= label_tag 'password' %>
+      <%= password_field_tag 'password' %>
+    </p>
+    <%= submit_tag 'Login', :id => "login_form_button"%>
+    <%= link_to('Sign Up', new_user_path) %>
+  <% end %>
+  </div>
+<% end %>
