@@ -3,8 +3,8 @@
     <div id="users_index_inner">
       <%= image_tag(user.avatar, :class =>'users_thumb') if user.avatar %>
       <p><%= link_to(user.username, user) %></p>
-        <li> • <%= link_to('edit', edit_user_path(user)) %> • </li> 
-        <li> • <%= link_to('remove', user, :data => {:confirm => 'are you sure?', :method => :delete }) %> • </li>
+        <li>&bullet;<%= link_to('edit', edit_user_path(user)) %>&bullet;</li> 
+        <li>&bullet;<%= link_to('remove', user, :data => {:confirm => 'are you sure?', :method => :delete }) %>&bullet;</li>
     </div><!-- users_index_inner -->
    <% end %>
 </div> 

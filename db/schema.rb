@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20140722100841) do
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "document_id"
   end
 
 end
