@@ -19,4 +19,3 @@ documents.each do |doc|
   d.pagenumber = doc['pagenumber']
   d.user_id = u1.id
   d.save
-end
