@@ -7,6 +7,7 @@ class DocumentsController < ApplicationController
       # @documents = Document.all
       @document = Document.find_by(:pagenumber => params[:page] || 1)
       @documents = Document.page(params[:page]).per(1)
+      linking_refs
     end
 
     respond_to do |format|
@@ -62,9 +63,7 @@ class DocumentsController < ApplicationController
 # raise 'error'
     # @documents = Document.page(params[:page]).per(1)
     #@document = Document.find params[:page] if params[:page]
-    # @doucument = Document.order
-
-    linking_refs
+    # @doucument = Document.order 
     # would write @visuals = @document.visuals
     # if didn't include document.visuals through associations on view page
     # but is highly more preferable to effectively use associations
