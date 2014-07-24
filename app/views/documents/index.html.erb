@@ -3,7 +3,7 @@
 <div class='main'>
 
   <h2><%= @document.title if @document%></h2>
-    <p><%= markdown @document.content if @document%></p>
+    <%= markdown @document.content if @document%>
     <% if @document.pagenumber %>
   <% end %>
 
