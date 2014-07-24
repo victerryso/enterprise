@@ -10,8 +10,6 @@
   <%= text_field_tag :search, params[:search_doc], :placeholder => "Search Documents", :id => 'search_bar' %>
 <% end %>
 
-<ul>
-  <% @all_documents.each do |document| %>
-    <li><%= link_to(document.title, documents_path(:page => document.pagenumber)) %></li>
-  <% end %>
-</ul>
+<% @all_documents.each do |document| %>
+  <li><%= link_to(document.title, documents_path(:page => document.pagenumber)) %></li>
+<% end %>

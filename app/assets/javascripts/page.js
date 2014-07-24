@@ -32,9 +32,15 @@ $(document).ready( function () {
     $('.front-page').height($(window).height());
   });
 
+  $(window).resize(function() {
+    $('#side-menu').height($(window).height());
+  });
+
   $('.front-page').height($(window).height());
   headerFadeOut();
 
+  $('#side-menu').height($(window).height());
+  headerFadeOut();
 //////////////////////////////////////////////////
 
   var toggleMenu = function() {
