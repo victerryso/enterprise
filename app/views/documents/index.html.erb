@@ -2,26 +2,21 @@
 
 <div class='main'>
 
-  <h2>Documents</h2>
-
-  <p>
-  <% if @current_user.try(:is_admin) %>
-    <li><%= link_to('export to json',export_documents_path) %></li>
-  <% end %>
-  </p>
-
   <h2><%= @document.title if @document%></h2>
-      <p><%= markdown @document.content if @document%></p>
-      <% if @document.pagenumber %>
-        <p>Page number: <%= @document.pagenumber %></p>
-      <% end %>
+    <p><%= markdown @document.content if @document%></p>
+    <% if @document.pagenumber %>
+  <% end %>
 
-
-  </div><!-- documents_index -->
-    <%= paginate Document.page(params[:page]).per(1), :window => 0 %><br/>
+  <%= paginate Document.page(params[:page]).per(1), :window => 0 %><br/>
 
   <% if @current_user && @current_user.id == @document.user_id %>
-    <%= link_to('edit', edit_document_path(@document)) %><br/>
+
+    <%= link_to('Edit', edit_document_path(@document)) %>
+
+    <% if @current_user.try(:is_admin) %>
+      | <%= link_to('Export Via JSON',export_documents_path) %>
+    <% end %>
+
     <% @document.visuals.each do |v| %>
       <%= v.image_url %><br/>
     <% end %>
