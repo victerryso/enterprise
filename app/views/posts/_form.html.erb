@@ -1,3 +1,5 @@
+<div class='post-form'>
+
 <%= form_for @post do |f| %>
   <% @post.errors.full_messages.each do |error| %>
     <li><%= error %></li>
@@ -13,5 +15,7 @@
     <%=f.text_area :body %>
   </p>
 
-  <p><%= f.submit 'Create Forum' %> </p>
+  <p><%= f.submit %> </p>
 <% end %>
+
+</div>

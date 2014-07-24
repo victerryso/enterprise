@@ -1,6 +1,14 @@
 class DocumentsController < ApplicationController
   def index
-    @documents = Document.all
+    if params[:search]
+      search_function
+    else
+# raise 'err'
+      # @documents = Document.all
+      @document = Document.find_by(:pagenumber => params[:page] || 1)
+      @documents = Document.page(params[:page]).per(1)
+    end
+
     respond_to do |format|
       format.html #index.html.erb
       format.json { render json: @documents }
@@ -51,9 +59,11 @@ class DocumentsController < ApplicationController
     @document = Document.find params[:id]
     @users = User.all
 
-    @documents = Document.page(params[:page]).per(1)
-    @document = Document.find params[:page] if params[:page]
-   
+# raise 'error'
+    # @documents = Document.page(params[:page]).per(1)
+    #@document = Document.find params[:page] if params[:page]
+    # @doucument = Document.order
+
     linking_refs
     # would write @visuals = @document.visuals
     # if didn't include document.visuals through associations on view page
@@ -117,15 +127,21 @@ private
         "[#{$1}](#{array[$2]})" # Joel did this but let's never speak of it again.
       else
         str1
-      end 
+      end
     end
-    # p content.gsub(/AASB \S+/) { |str| '[' + str + '](' + array[str] + ')'  }
-
-    name = 
-
   end
 
-  
+  def highlight(text, phrases, options = {})
+    text = sanitize(text) if options.fetch(:sanitize, true)
+
+    if text.blank? || phrases.blank?
+      text
+    else
+      highlighter = options.fetch(:highlighter, '<mark>\1</mark>')
+      match = Array(phrases).map { |p| Regexp.escape(p) }.join('|')
+      text.gsub(/(#{match})(?![^<]*?>)/i, highlighter)
+    end.html_safe
+  end
 end
 
 

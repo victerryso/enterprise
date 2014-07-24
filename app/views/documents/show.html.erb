@@ -9,20 +9,18 @@ It also lists the relating revision number to the document -->
 
     <!--showing document title and contents -->
       <h2><%= @document.title if @document%></h2>
-      <p><%= markdown @document.content if @document%></p>
+      <p id='doc-content'><%= markdown @document.content if @document%></p>
       <% if @document.pagenumber %>
         <p>Page number: <%= @document.pagenumber %></p>
       <% end %>
 
-
       <% @document.visuals.each do |visual| %>
-        <div>
-          <p><%= visual.title %></p>
-          <%= image_tag visual.image_url(:thumb) if visual.image %>
-          <%= link_to 'delete', visual, :data =>{:confirm => 'Remove image?', :method => :delete} %>
-        </div>
-      <% end %>
-
+      <div>
+        <p><%= visual.title %></p>
+        <%= image_tag visual.image_url, :class => 'doc_img' if visual.image %>
+        <%= link_to 'delete', visual, :data =>{:confirm => 'Remove image?', :method => :delete} %>
+      </div>
+    <% end %>
 
       <% if @current_user && @current_user.is_admin? %>
         <p>By <%= @document.user.firstname if @document.user %> <%= @document.user.lastname if @document.user %></p>
@@ -41,11 +39,3 @@ It also lists the relating revision number to the document -->
 
     </div><!-- documents_show_notes -->
   </div><!-- documents_show -->
-
-  <% if @current_user && @current_user.id == @document.user_id %>
-    <div id="documents_show_menu">
-      <%= paginate @documents %>
-    </div><!-- documents_show_menu -->
-  <% end %>
-
-</div>
