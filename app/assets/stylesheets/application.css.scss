@@ -17,6 +17,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+a, a:hover {
+  color: yellow;
+}
+
 #container {
   min-height: 560px;
   margin: auto;
@@ -54,6 +58,8 @@ nav ul h1 {
   background-size: cover;
   height: 50px;
   width: 50px;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 #side-menu {

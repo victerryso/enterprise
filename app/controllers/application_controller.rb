@@ -23,13 +23,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def search_documents
-    if params[:search]
-      @doc_search = Document.search(params[:search]).order("created_at DESC")
-    else
-      @doc_search = Document.order("created_at DESC")
-    end
-  end
+
 
 end
 

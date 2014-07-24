@@ -1,18 +1,17 @@
 class DocumentsController < ApplicationController
-  
-  
-
   def index
-    if params[:search]
-      search_function
-    else
-      @documents = Document.all
-    end
-
+    @documents = Document.all
     respond_to do |format|
       format.html #index.html.erb
       format.json { render json: @documents }
     end
+
+    if params[:search]
+      @doc_search = Document.search(params[:search]).order("created_at DESC")
+    else
+      @doc_search = Document.order("created_at DESC")
+    end
+
   end
 
   def export
@@ -27,16 +26,16 @@ class DocumentsController < ApplicationController
   # end
 
   def create
-      @document = Document.new document_params
-      #Add document to current user  * has_and_belongs to many relationship
-      @document.user = @current_user
-      if @document.save
-        flash[:notice] = "New document created."
-        redirect_to @document
-      else
-        flash[:notice] = "Did not successfully create new document"
-        render :new
-      end
+    @document = Document.new document_params
+    #Add document to current user  * has_and_belongs to many relationship
+    @document.user = @current_user
+    if @document.save
+      flash[:notice] = "New document created."
+      redirect_to @document
+    else
+      flash[:notice] = "Did not successfully create new document"
+      render :new
+    end
   end
 
   def new
@@ -97,16 +96,5 @@ private
   def revision_params
     params.require(:revision).permit(:title, :content, :pagenumber, :document_id,
                                       visuals_attributes: [:id, :title, :_destroy])
-  end
-
-  def search_function
-    search = params[:search]
-    @documents = []
-    unless search == ""
-      # Author.column_names[1..-3].each do #the search yadayada
-      @documents << Document.where("title ILIKE :search", search: "%#{ search }%") # % % means get everything before nd get everything after
-      @documents << Document.where("content ILIKE :search", search: "%#{ search }%") # ILIKE makes it case insensitive
-      @documents = @documents.flatten.uniq
-    end
   end
 end
