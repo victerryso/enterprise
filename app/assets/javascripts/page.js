@@ -45,6 +45,14 @@ $(document).ready( function () {
 
 //////////////////////////////////////////////////
 
+  var darkenBox = function () {
+    $(this).animateToggle({opacity: 0.5});
+  }
+
+  $('.box').hover(darkenBox);
+  
+
+  
 // $(document).on({
 //   "contextmenu": function(e) {
 //     e.preventDefault();
