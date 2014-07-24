@@ -54,7 +54,8 @@ class DocumentsController < ApplicationController
 
     @documents = Document.page(params[:page]).per(1)
     @document = Document.find params[:page] if params[:page]
-
+   
+    linking_refs
     # would write @visuals = @document.visuals
     # if didn't include document.visuals through associations on view page
     # but is highly more preferable to effectively use associations
@@ -108,5 +109,18 @@ private
       @documents << Document.where("content ILIKE :search", search: "%#{ search }%") # ILIKE makes it case insensitive
       @documents = @documents.flatten.uniq
     end
+  end
+
+  def linking_refs
+    array = {"AASB 101" => "http://www.aasb.gov.au/admin/file/content105/c9/AASB101_09-07_NFP_COMPdec12_07-13.pdf"}
+    @document.content.gsub!(/((AASB \d+)\S+)/) do |str1|
+      if array.has_key?($2)
+        "[#{$1}](#{array[$2]})" # Joel did this but let's never speak of it again.
+      else
+        str1
+      end 
+    end
+    # p content.gsub(/AASB \S+/) { |str| '[' + str + '](' + array[str] + ')'  }
+
   end
 end
