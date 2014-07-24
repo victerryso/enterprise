@@ -8,9 +8,6 @@
     <%= markdown @document.content if @document%>
     <% if @document.pagenumber %>
   <% end %>
-
-  <h2><%= @document.title if @document%></h2>
-  <p><%= markdown @document.content if @document%></p>
     
   <%= paginate Document.page(params[:page]).per(1), :window => 0 %><br/>
 
