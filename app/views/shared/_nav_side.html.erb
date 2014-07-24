@@ -7,7 +7,7 @@
 <% end %>
 
 <%= form_tag(documents_path, :method => "get") do %>
-  <%= text_field_tag :search, params[:search_doc], :placeholder => "Search Documents" %>
+  <%= text_field_tag :search, params[:search_doc], :placeholder => "Search Documents", :id => 'search_bar' %>
 <% end %>
 
 <ul>
