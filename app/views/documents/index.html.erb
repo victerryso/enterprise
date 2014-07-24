@@ -11,10 +11,8 @@
   </p>
 
   <h2><%= @document.title if @document%></h2>
-      <p><%= markdown @document.content if @document%></p>
-      <% if @document.pagenumber %>
-        <p>Page number: <%= @document.pagenumber %></p>
-      <% end %>
+  <p><%= markdown @document.content if @document%></p>
+      
 
 
   </div><!-- documents_index -->
