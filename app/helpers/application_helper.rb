@@ -29,7 +29,6 @@ module ApplicationHelper
         # ```ruby
         # block of code
         # ```
-        superscript:        true,
         tables:             true,
         fenced_code_blocks: true,
         # will ignore standard require for empty lines surrounding HTML blocks
