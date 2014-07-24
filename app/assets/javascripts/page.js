@@ -38,7 +38,7 @@ $(document).ready( function () {
 //////////////////////////////////////////////////
 
   var toggleMenu = function() {
-    $('#side-menu').fadeToggle(1000);
+    $('#side-menu').slideToggle(1000);
   };
 
   $('#hamburger').click(toggleMenu);
