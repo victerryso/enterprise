@@ -10,12 +10,18 @@
   <% end %>
   </p>
 
-  <div class="documents_index">
-  <% @documents.each do |document| %>
-    <div id="documents_index_inner">
-      <h3><%= link_to(document.title, document_path(document)) if document.title %></h3>
-    </div><!-- documents_index_inner -->
-  <% end %>
-  </div><!-- documents_index -->
+  <h2><%= @document.title if @document%></h2>
+      <p><%= markdown @document.content if @document%></p>
+      <% if @document.pagenumber %>
+        <p>Page number: <%= @document.pagenumber %></p>
+      <% end %>
 
+
+  </div><!-- documents_index -->
+    <%= paginate Document.page(params[:page]).per(1), :window => 0 %><br/>
+
+    <%= link_to('edit', edit_document_path(@document)) %><br/>
+    <% @document.visuals.each do |v| %>
+      <%= v.image_url %><br/>
+    <% end %>
 </div>

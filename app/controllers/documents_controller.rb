@@ -1,12 +1,14 @@
 class DocumentsController < ApplicationController
-  
-  
+
 
   def index
     if params[:search]
       search_function
     else
-      @documents = Document.all
+# raise 'err'
+      # @documents = Document.all
+      @document = Document.find_by(:pagenumber => params[:page] || 1)
+      @documents = Document.page(params[:page]).per(1)
     end
 
     respond_to do |format|
@@ -52,8 +54,10 @@ class DocumentsController < ApplicationController
     @document = Document.find params[:id]
     @users = User.all
 
-    @documents = Document.page(params[:page]).per(1)
-    @document = Document.find params[:page] if params[:page]
+# raise 'error'
+    # @documents = Document.page(params[:page]).per(1)
+    #@document = Document.find params[:page] if params[:page]
+    # @doucument = Document.order
 
     # would write @visuals = @document.visuals
     # if didn't include document.visuals through associations on view page

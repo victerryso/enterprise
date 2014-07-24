@@ -22,7 +22,7 @@ It also lists the relating revision number to the document -->
       <% @document.visuals.each do |visual| %>
       <div>
         <p><%= visual.title %></p>
-        <%= image_tag visual.image_url(:thumb) if visual.image %>
+        <%= image_tag visual.image_url, :class => 'doc_img' if visual.image %>
         <%= link_to 'delete', visual, :data =>{:confirm => 'Remove image?', :method => :delete} %>
       </div>
     <% end %>
@@ -44,7 +44,7 @@ It also lists the relating revision number to the document -->
         <li>&bullet; <%= link_to('edit', edit_document_path(@document)) %> &bullet;</li>
         <li><%= link_to('remove', @document, :data => {:confirm => 'Remove document?', :method => :delete }) %> &bullet;</li>
       </ul>
-      <%= paginate @documents %>
+      <%= paginate Document.page(params[:page]).per(1), :window => 0 %>
     </div><!-- documents_show_menu -->
   <% end %>
 

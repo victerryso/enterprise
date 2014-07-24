@@ -12,6 +12,6 @@
 <ul>
 
   <% @all_documents.each do |document| %>
-    <li><%= link_to(document.title, document_path(document, :page => document.id)) %></li>
+    <li><%= link_to(document.title, documents_path(:page => document.pagenumber)) %></li>
   <% end %>
 </ul>
