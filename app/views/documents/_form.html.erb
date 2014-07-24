@@ -1,34 +1,36 @@
 <!-- This is the document form template, including nested Visuals form  -->
 
-<%= @document.errors.full_messages %>
+<div class='document-form'>
 
-<div class="document_form">
+<% unless @document.errors.empty? %>
+  <%= @document.errors.full_messages %>
+<% end %>
+
   <%= form_for @document do |f| %>
     <p>
-      <%= f.label :title, "document title" %>
-      <%= f.text_field :title, :autocomplete => 'off', :placeholder => 'Document title is..', :autofocus => true %>
+      <%= f.label :title, "Document Title" %>
+      <%= f.text_field :title, :autocomplete => 'off', :autofocus => true %>
     </p>
     <p>
-      <%= f.label :content, "document content" %>
-      <%= f.text_area :content, :placeholder => "Enter the document's content here .." %>
+      <%= f.label :content, "Document Content" %>
+      <%= f.text_area :content %>
     </p>
     <p>
       <%= f.label :pagenumber, "Page number" %>
       <%= f.number_field :pagenumber, in: 1...99999 %>
     </p>
 
-    <h3>Add Images to Document</h3>
-    <div id="add_images_form">
-      <%= f.fields_for :visuals do |visual| %>
+     <%= f.fields_for :visuals do |visual| %>
         <%= render 'visual_fields', :f => visual %>
       <% end %>
-    </div><!-- add_images_form -->
     <div class="add_images_links">
-      <%= link_to_add_association 'add visual', f, :visuals %>
+
+      <%= link_to_add_association 'Add Visual', f, :visuals %>
     </div><!-- add_images_link -->
 
   <div id="document_form_button">
-    <%= f.submit 'Submit' %>
+    <%= f.submit %>
   </div>
   <% end %>
 </div>
+

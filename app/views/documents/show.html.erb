@@ -9,7 +9,7 @@ It also lists the relating revision number to the document -->
 
     <!--showing document title and contents -->
       <h2><%= @document.title if @document%></h2>
-      <p><%= markdown @document.content if @document%></p>
+      <p id='doc-content'><%= markdown @document.content if @document%></p>
       <% if @document.pagenumber %>
         <p>Page number: <%= @document.pagenumber %></p>
       <% end %>
