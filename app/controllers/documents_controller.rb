@@ -53,7 +53,7 @@ class DocumentsController < ApplicationController
 
     @documents = Document.page(params[:page]).per(1)
     @document = Document.find params[:page] if params[:page]
-   
+
     linking_refs
     # would write @visuals = @document.visuals
     # if didn't include document.visuals through associations on view page
@@ -110,7 +110,6 @@ private
     end
   end
 
-<<<<<<< HEAD
   def linking_refs
     array = {"AASB 101" => "http://www.aasb.gov.au/admin/file/content105/c9/AASB101_09-07_NFP_COMPdec12_07-13.pdf"}
     @document.content.gsub!(/((AASB \d+)\S+)/) do |str1|
@@ -118,24 +117,23 @@ private
         "[#{$1}](#{array[$2]})" # Joel did this but let's never speak of it again.
       else
         str1
-      end 
+      end
     end
     # p content.gsub(/AASB \S+/) { |str| '[' + str + '](' + array[str] + ')'  }
 
   end
-=======
-  def highlight(text, phrases, options = {})
-  text = sanitize(text) if options.fetch(:sanitize, true)
 
-  if text.blank? || phrases.blank?
-    text
-  else
-    highlighter = options.fetch(:highlighter, '<mark>\1</mark>')
-    match = Array(phrases).map { |p| Regexp.escape(p) }.join('|')
-    text.gsub(/(#{match})(?![^<]*?>)/i, highlighter)
-  end.html_safe
-end
->>>>>>> 43282042eebd002c09e6bae84fea040cf6a871e2
+  def highlight(text, phrases, options = {})
+    text = sanitize(text) if options.fetch(:sanitize, true)
+
+    if text.blank? || phrases.blank?
+      text
+    else
+      highlighter = options.fetch(:highlighter, '<mark>\1</mark>')
+      match = Array(phrases).map { |p| Regexp.escape(p) }.join('|')
+      text.gsub(/(#{match})(?![^<]*?>)/i, highlighter)
+    end.html_safe
+  end
 end
 
 
