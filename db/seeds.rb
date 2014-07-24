@@ -19,10 +19,3 @@ documents.each do |doc|
   d.user_id = u1.id
   d.save
 end
-
-article = {'AASB 101.10(e)' => "http://www.aasb.gov.au/admin/file/content105/c9/AASB101_09-07_NFP_COMPdec12_07-13.password_confirmation"}
-
- article.each do | item, http |
- 		puts "<a href='#{http}'>#{item}</a>"
- end
-
