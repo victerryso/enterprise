@@ -7,13 +7,11 @@
     <% if @document.pagenumber %>
   <% end %>
 
-<<<<<<< HEAD
   <h2><%= @document.title if @document%></h2>
   <p><%= markdown @document.content if @document%></p>
-      
-=======
+    
   <%= paginate Document.page(params[:page]).per(1), :window => 0 %><br/>
->>>>>>> fd02d77977e88165d86cbf6d8c3559a749c6891a
+
 
   <% if @current_user && @current_user.id == @document.user_id %>
 
