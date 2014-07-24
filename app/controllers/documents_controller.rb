@@ -1,6 +1,5 @@
 class DocumentsController < ApplicationController
   def index
-
     if params[:search]
       search_function
     else
@@ -64,8 +63,7 @@ class DocumentsController < ApplicationController
 # raise 'error'
     # @documents = Document.page(params[:page]).per(1)
     #@document = Document.find params[:page] if params[:page]
-    # @doucument = Document.order
-
+    # @doucument = Document.order 
     # would write @visuals = @document.visuals
     # if didn't include document.visuals through associations on view page
     # but is highly more preferable to effectively use associations
