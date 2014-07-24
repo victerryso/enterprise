@@ -53,7 +53,7 @@ class DocumentsController < ApplicationController
 
     @documents = Document.page(params[:page]).per(1)
     @document = Document.find params[:page] if params[:page]
-   
+
     linking_refs
     # would write @visuals = @document.visuals
     # if didn't include document.visuals through associations on view page
@@ -117,7 +117,7 @@ private
         "[#{$1}](#{array[$2]})" # Joel did this but let's never speak of it again.
       else
         str1
-      end 
+      end
     end
   end
 
