@@ -1,16 +1,16 @@
 <br><br><br><br>
 
 <h2>Documents</h2>
-<% if @current_user %>
-  <%= link_to('Create New Document', new_document_path) %>
+
+<% if @current_user && @current_user.is_admin? %>
+  <%= link_to('Create Document', new_document_path) %>
 <% end %>
 
 <%= form_tag(documents_path, :method => "get") do %>
-  <%= text_field_tag :search, params[:search], :placeholder => "Search Documents" %>
-  <button type="submit"><i class="icon-search"></i></button>
+  <%= text_field_tag :search, params[:search_doc], :placeholder => "Search Documents" %>
 <% end %>
-<ul>
 
+<ul>
   <% @all_documents.each do |document| %>
     <li><%= link_to(document.title, documents_path(:page => document.pagenumber)) %></li>
   <% end %>

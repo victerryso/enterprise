@@ -20,8 +20,10 @@
   </div><!-- documents_index -->
     <%= paginate Document.page(params[:page]).per(1), :window => 0 %><br/>
 
+  <% if @current_user && @current_user.id == @document.user_id %>
     <%= link_to('edit', edit_document_path(@document)) %><br/>
     <% @document.visuals.each do |v| %>
       <%= v.image_url %><br/>
     <% end %>
+  <% end %>
 </div>
