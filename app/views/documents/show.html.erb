@@ -7,8 +7,9 @@ It also lists the relating revision number to the document -->
   <div class="documents_show">
     <div id="documents_show_notes">
 
-      <h2><%= @document.title%></h2>
-      <p><%= markdown @document.content%></p>
+    <!--showing document title and contents -->
+      <h2><%= @document.title if @document%></h2>
+      <p><%= markdown @document.content if @document%></p>
       <% if @document.pagenumber %>
         <p>Page number: <%= @document.pagenumber %></p>
       <% end %>
