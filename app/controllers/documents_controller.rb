@@ -109,6 +109,16 @@ private
     end
   end
 
+  def highlight(text, phrases, options = {})
+  text = sanitize(text) if options.fetch(:sanitize, true)
+
+  if text.blank? || phrases.blank?
+    text
+  else
+    highlighter = options.fetch(:highlighter, '<mark>\1</mark>')
+    match = Array(phrases).map { |p| Regexp.escape(p) }.join('|')
+    text.gsub(/(#{match})(?![^<]*?>)/i, highlighter)
+  end.html_safe
 end
 end
 

@@ -14,10 +14,6 @@ It also lists the relating revision number to the document -->
         <p>Page number: <%= @document.pagenumber %></p>
       <% end %>
 
-        <div id="document_show_notes_user">
-
-            
-        </div>
 
       <% @document.visuals.each do |visual| %>
         <div>
@@ -30,7 +26,7 @@ It also lists the relating revision number to the document -->
 
       <% if @current_user && @current_user.is_admin? %>
         <p>By <%= @document.user.firstname if @document.user %> <%= @document.user.lastname if @document.user %></p>
-        <p><%= link_to('Edit', edit_document_path(@document)) %> | 
+        <p><%= link_to('Edit', edit_document_path(@document)) %> |
         <%= link_to('Remove', @document, :data => {:confirm => 'Remove document?', :method => :delete }) %></p>
 
           <% unless @document.revisions.empty? %>
