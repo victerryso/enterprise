@@ -14,14 +14,14 @@ $(document).ready( function () {
 
   $(window).scroll(function() {
     var scrollVal = $(this).scrollTop();
-    if (headerFade === false && scrollVal > 300) {
+    if (headerFade === false && scrollVal > 50) {
       headerFadeIn();
     }
   });
 
   $(window).scroll(function() {
     var scrollVal = $(this).scrollTop();
-    if (headerFade === true && scrollVal < 300) {
+    if (headerFade === true && scrollVal < 50) {
       headerFadeOut();
     }
   });

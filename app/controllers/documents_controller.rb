@@ -1,18 +1,17 @@
 class DocumentsController < ApplicationController
-  
-  
-
   def index
-    if params[:search]
-      search_function
-    else
-      @documents = Document.all
-    end
-
+    @documents = Document.all
     respond_to do |format|
       format.html #index.html.erb
       format.json { render json: @documents }
     end
+
+    if params[:search]
+      @doc_search = Document.search(params[:search]).order("created_at DESC")
+    else
+      @doc_search = Document.order("created_at DESC")
+    end
+
   end
 
   def export
@@ -27,16 +26,16 @@ class DocumentsController < ApplicationController
   # end
 
   def create
-      @document = Document.new document_params
-      #Add document to current user  * has_and_belongs to many relationship
-      @document.user = @current_user
-      if @document.save
-        flash[:notice] = "New document created."
-        redirect_to @document
-      else
-        flash[:notice] = "Did not successfully create new document"
-        render :new
-      end
+    @document = Document.new document_params
+    #Add document to current user  * has_and_belongs to many relationship
+    @document.user = @current_user
+    if @document.save
+      flash[:notice] = "New document created."
+      redirect_to @document
+    else
+      flash[:notice] = "Did not successfully create new document"
+      render :new
+    end
   end
 
   def new
@@ -111,6 +110,7 @@ private
     end
   end
 
+<<<<<<< HEAD
   def linking_refs
     array = {"AASB 101" => "http://www.aasb.gov.au/admin/file/content105/c9/AASB101_09-07_NFP_COMPdec12_07-13.pdf"}
     @document.content.gsub!(/((AASB \d+)\S+)/) do |str1|
@@ -123,4 +123,19 @@ private
     # p content.gsub(/AASB \S+/) { |str| '[' + str + '](' + array[str] + ')'  }
 
   end
+=======
+  def highlight(text, phrases, options = {})
+  text = sanitize(text) if options.fetch(:sanitize, true)
+
+  if text.blank? || phrases.blank?
+    text
+  else
+    highlighter = options.fetch(:highlighter, '<mark>\1</mark>')
+    match = Array(phrases).map { |p| Regexp.escape(p) }.join('|')
+    text.gsub(/(#{match})(?![^<]*?>)/i, highlighter)
+  end.html_safe
 end
+>>>>>>> 43282042eebd002c09e6bae84fea040cf6a871e2
+end
+
+
