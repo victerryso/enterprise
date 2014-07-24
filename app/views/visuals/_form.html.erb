@@ -1,23 +1,13 @@
-<!-- This is the Visuals form template -->
+<%= form_for @visual do |f| %>
 
-<div class="visual_form">
-  <%= form_for @visual do |f| %>
-    <div class="visual_form_title_field">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </div><!-- visual_form_title_field -->
-    <div class="nested_fields">
-      <div class="visual_form_description_field">
-        <%= f.label :description %>
-        <%= f.text_field :description %>
-      </div><!-- visual_form_description_field -->
-      <%= link_to_remove_association "remove image", f %>
-    </div><!-- nested_fields -->
-    <div id="visual_form_button">
-      <%= f.submit 'Submit' %>
-    </div><!-- visual_form_button -->
-  <% end %>
-</div><!-- visual_form -->
+  <%= f.label :title %>
+  <%= f.text_field :title %>
 
+  <%= f.label :description %>
+  <%= f.text_field :description %>
 
+  <%= link_to_remove_association "Remove Image", f %>
 
+  <%= f.submit 'Submit' %>
+
+<% end %>

@@ -2,20 +2,14 @@
 
 <div class="visual_form">
   <div class="visual_form_title">
-    <%= f.label :title, 'Image title / description' %>
+    <%= f.label :title, 'Image Title' %>
     <%= f.text_field :title %>
   </div>
   <p>
-    <%= f.label :image, 'Insert image here'%>
+    <%= f.label :image, 'Image Link/Upload'%>
+    <%= f.text_field :remote_image_url %>
     <%= f.file_field :image %>
     <%= f.hidden_field :image_cache %>
   </p>
-  <p>
-    <%= f.label :remote_image_url, 'Insert image url location here' %>
-    <%= f.text_field :remote_image_url %>
-  </p>
-  <div>
-    <%= link_to_remove_association "Remove image", f %>
-  </div>
+
 </div><!-- visual_form -->
-    
