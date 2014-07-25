@@ -1,3 +1,5 @@
+# Controller methods for handling comments within Forum feature
+
 class CommentsController < ApplicationController
   def create
     @post = Post.find params[:post_id]
@@ -6,29 +8,9 @@ class CommentsController < ApplicationController
     @comment.save
     
     @post.comments << @comment
-    # @comment = @post.comments.create params[:comment]
+
     redirect_to post_path(@post)
   end
-
-  # def new
-  #   @user = @current_user
-  #   @comment = Comment.new
-  # end
-
-  # def edit
-  #   @comment = Comment.find params[:id]
-  # end
-
-  # def show
-  #   @comment = Comment.find params[:id]
-  # end
-  
-
-  # def update
-  #   comment = Comment.find params[:id] 
-  #   comment.update comment_params
-  #   redirect_to post
-  # end
 
   def destroy
     @post = Post.find(params[:post_id])

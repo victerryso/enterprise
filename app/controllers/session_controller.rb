@@ -1,3 +1,4 @@
+# Controller methods to handle login sessions
 class SessionController < ApplicationController
   layout "homepage"
   def new

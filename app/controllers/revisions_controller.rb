@@ -1,3 +1,4 @@
+# Controller methods to handle revision for documents
 class RevisionsController < ApplicationController
   def index
     @revisions = Revision.all

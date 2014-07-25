@@ -1,10 +1,13 @@
+# Controller methods for documents, including search function for documents, JSON export and 
+# function to retrieve external document pdf links 
+
 class DocumentsController < ApplicationController
-  def index
+  def index  
     if params[:search]
       search_function
+      render :search_results
+      return
     else
-# raise 'err'
-      # @documents = Document.all
       @document = Document.find_by(:pagenumber => params[:page] || 1)
       @documents = Document.page(params[:page]).per(1)
       linking_refs
@@ -14,13 +17,6 @@ class DocumentsController < ApplicationController
       format.html #index.html.erb
       format.json { render json: @documents }
     end
-
-    if params[:search]
-      @doc_search = Document.search(params[:search]).order("created_at DESC")
-    else
-      @doc_search = Document.order("created_at DESC")
-    end
-
   end
 
   def export
@@ -28,6 +24,7 @@ class DocumentsController < ApplicationController
     send_data @documents.to_json, :filename => "documents.json"
   end
 
+  # this would have been an import JSON file function feature
   # def import
   #   post = DataFile.save(params[:upload])
   #   render :text => "File has been uploaded successfully"
@@ -36,7 +33,6 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.new document_params
-    #Add document to current user  * has_and_belongs to many relationship
     @document.user = @current_user
     if @document.save
       flash[:notice] = "New document created."
@@ -58,12 +54,8 @@ class DocumentsController < ApplicationController
 
   def show
     @document = Document.find params[:id]
-    @users = User.all
-
-# raise 'error'
-    # @documents = Document.page(params[:page]).per(1)
-    #@document = Document.find params[:page] if params[:page]
-    # @doucument = Document.order 
+  
+    @users = User.all 
     # would write @visuals = @document.visuals
     # if didn't include document.visuals through associations on view page
     # but is highly more preferable to effectively use associations
@@ -112,9 +104,8 @@ private
     search = params[:search]
     @documents = []
     unless search == ""
-      # Author.column_names[1..-3].each do #the search yadayada
-      @documents << Document.where("title ILIKE :search", search: "%#{ search }%") # % % means get everything before nd get everything after
-      @documents << Document.where("content ILIKE :search", search: "%#{ search }%") # ILIKE makes it case insensitive
+      @documents << Document.where("title ILIKE :search", search: "%#{ search }%") # % retrieves everything before and after 'and'
+      @documents << Document.where("content ILIKE :search", search: "%#{ search }%") # ILIKE enables search term to becase insensitive
       @documents = @documents.flatten.uniq
     end
   end
@@ -123,23 +114,11 @@ private
     array = {"AASB 101" => "http://www.aasb.gov.au/admin/file/content105/c9/AASB101_09-07_NFP_COMPdec12_07-13.pdf"}
     @document.content.gsub!(/((AASB \d+)\S+)/) do |str1|
       if array.has_key?($2)
-        "[#{$1}](#{array[$2]})" # Joel did this but let's never speak of it again.
+        "[#{$1}](#{array[$2]})" # Joel did this but let's never speak of it again or to him again about regex
       else
         str1
       end
     end
-  end
-
-  def highlight(text, phrases, options = {})
-    text = sanitize(text) if options.fetch(:sanitize, true)
-
-    if text.blank? || phrases.blank?
-      text
-    else
-      highlighter = options.fetch(:highlighter, '<mark>\1</mark>')
-      match = Array(phrases).map { |p| Regexp.escape(p) }.join('|')
-      text.gsub(/(#{match})(?![^<]*?>)/i, highlighter)
-    end.html_safe
   end
 end
 

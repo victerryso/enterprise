@@ -1,3 +1,4 @@
+# Controller methods to handle uploading an image to a document via a nested form within the document form
 class VisualsController < ApplicationController
   def index
     @visuals = Visual.all

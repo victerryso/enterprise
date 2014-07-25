@@ -15,8 +15,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user
     if session[:user_id].present?
-      @current_user = User.where(:id => session[:user_id]).first
-      # finding a user
+      @current_user = User.where(:id => session[:user_id]).first # finding a user
     end
 
     if @current_user.nil?

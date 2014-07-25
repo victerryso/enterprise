@@ -1,3 +1,5 @@
+<!-- Main document view (with index view on the side) and allows a signed-in user to edit, remove export documents -->
+
 <div class='empty-black'></div>
 
 <div class='main'>
@@ -5,21 +7,15 @@
   <%= paginate Document.page(params[:page]).per(1), :window => 0 %><br/>
 
   <h2><%= @document.title if @document%></h2>
-    <%= markdown @document.content if @document%>
-    <% if @document.pagenumber %>
-  <% end %>
+  <%= highlight(markdown(@document.content), params[:search_term]) if @document%>
+  
+  <p><%= paginate Document.page(params[:page]).per(1), :window => 0 %></p>
 
-  <%= paginate Document.page(params[:page]).per(1), :window => 0 %><br/>
-
-  <% if @current_user && @current_user.id == @document.user_id %>
+  <% if @current_user && @current_user.is_admin? %>
 
     <%= link_to('Edit', edit_document_path(@document)) %>
-    <%= link_to('remove', @document, :data => {:confirm => 'are you sure?', :method => :delete }) %>
-
-
-    <% if @current_user.try(:is_admin) %>
-      | <%= link_to('Export Via JSON',export_documents_path) %>
-    <% end %>
+    | <%= link_to('Remove', @document, :data => {:confirm => 'Are you sure?', :method => :delete }) %>
+    | <%= link_to('Export Via JSON',export_documents_path) %>
 
     <% @document.visuals.each do |v| %>
       <%= v.image_url %><br/>

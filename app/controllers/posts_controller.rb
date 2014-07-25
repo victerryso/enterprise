@@ -1,5 +1,5 @@
+# Controller methods for handling posts within forum
 class PostsController < ApplicationController
-
    def index
     if params[:search]
       search_function
@@ -55,9 +55,8 @@ class PostsController < ApplicationController
     search = params[:search]
     @posts = []
     unless search == ""
-      # Author.column_names[1..-3].each do #the search yadayada
-      @posts << Post.where("title ILIKE :search", search: "%#{ search }%") # % % means get everything before nd get everything after
-      @posts << Post.where("body ILIKE :search", search: "%#{ search }%") # ILIKE makes it case insensitive
+      @posts << Post.where("title ILIKE :search", search: "%#{ search }%") # % retrieves everything before and after 'and'
+      @posts << Post.where("body ILIKE :search", search: "%#{ search }%") # ILIKE enables search term to becase insensitive
       @posts = @posts.flatten.uniq
     end
   end

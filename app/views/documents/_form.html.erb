@@ -19,12 +19,11 @@
       <%= f.label :pagenumber, "Page number" %>
       <%= f.number_field :pagenumber, in: 1...99999 %>
     </p>
-
-     <%= f.fields_for :visuals do |visual| %>
+    <!-- nested form to handle uploading image to a document -->
+    <%= f.fields_for :visuals do |visual| %>
         <%= render 'visual_fields', :f => visual %>
       <% end %>
     <div class="add_images_links">
-
       <%= link_to_add_association 'Add Visual', f, :visuals %>
     </div><!-- add_images_link -->
 

@@ -1,3 +1,4 @@
+# Controller methods to handle user features ie logins, creation, edit, update, destroy
 class UsersController < ApplicationController
   before_action :check_if_logged_in, :except => [:new, :create]
   def index

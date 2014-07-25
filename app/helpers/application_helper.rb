@@ -1,3 +1,4 @@
+# contrains methods for markdown text editor embedded within document form
 module ApplicationHelper
   def markdown(text)
       render_options = {

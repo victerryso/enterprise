@@ -1,5 +1,7 @@
 <!-- This displays the individual document and allows the user to edit or remove it.
-It also lists the relating revision number to the document -->
+It also lists the relating revision number to the document 
+Only for a signed-in user -->
+
 <div class='empty-black'></div>
 
 <div class='main'>
@@ -9,7 +11,7 @@ It also lists the relating revision number to the document -->
 
     <!--showing document title and contents -->
       <h2><%= @document.title if @document%></h2>
-      <p id='doc-content'><%= markdown @document.content if @document%></p>
+      <p id='doc-content'><%= markdown(@document.content) if @document%></p>
       <% if @document.pagenumber %>
         <p>Page number: <%= @document.pagenumber %></p>
       <% end %>
