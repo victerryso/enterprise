@@ -9,16 +9,13 @@
     <% if @document.pagenumber %>
   <% end %>
 
-  <h2><%= @document.title if @document%></h2>
-  <p><%= markdown @document.content if @document%></p>
-    
   <%= paginate Document.page(params[:page]).per(1), :window => 0 %><br/>
 
   <% if @current_user && @current_user.id == @document.user_id %>
 
-    <%= link_to('Edit', edit_document_path(@document)) %> | 
-    <%= link_to('Remove', @document, :data => {:confirm => 'are you sure?', :method => :delete }) %>
-    
+    <%= link_to('Edit', edit_document_path(@document)) %>
+    <%= link_to('remove', @document, :data => {:confirm => 'are you sure?', :method => :delete }) %>
+
     <% if @current_user.try(:is_admin) %>
       | <%= link_to('Export Via JSON',export_documents_path) %>
     <% end %>

@@ -1,24 +1,24 @@
-<div class="user_signup_form">
-<%= form_for @user do |f| %>
-  <p>
-    <%= f.label :username %>
-    <%= f.text_field :username, :autofocus => true %>
-  </p>
-  <p>
-    <%= f.label :avatar %>
-    <%= f.text_field :avatar %>
-  </p> 
-  <p>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </p>
+<div class='user-form'>
 
-  <div id="user_signup_form_button">
-    <%= f.submit 'Submit' %>
-  </div>
-<% end %>
+  <%= form_for @user do |f| %>
+    <p>
+      <%= f.label :username %>
+      <%= f.text_field :username, :autofocus => true %>
+    </p>
+    <p>
+      <%= f.label :avatar %>
+      <%= f.text_field :avatar %>
+    </p>
+    <p>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </p>
+    <p>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </p>
+
+    <%= f.submit %>
+  <% end %>
+
 </div>

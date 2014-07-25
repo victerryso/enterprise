@@ -59,10 +59,15 @@ p {
   /*border: 2px solid black;*/
   background-size: cover;
   line-height: 240px;
+  color: white;
   position: relative;
-  /*z-index: -1;*/
+  /*z-index: -1;*/  
+}
 
-  
+.box h3 {
+  display: inline-block;
+  position: absolute;
+  margin-left: -50px;
 }
 
 .blackbox, .blackbox2, .blackbox3, .blackbox4{
@@ -80,22 +85,10 @@ p {
   opacity: 0.5;
   margin: -0px;
  /* z-index: -1;*/
-  
-
-}
+}  
 
 span{
   position: absolute;
- 
-  
-}
-
-.span{
-  font-size: 24px;
-  margin: -50px;
-  color : white;
-  /*color: rgba(255,255,255,1); */
-
 }
 
 

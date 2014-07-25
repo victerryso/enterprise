@@ -63,7 +63,7 @@ class DocumentsController < ApplicationController
 # raise 'error'
     # @documents = Document.page(params[:page]).per(1)
     #@document = Document.find params[:page] if params[:page]
-    # @doucument = Document.order 
+    # @doucument = Document.order
     # would write @visuals = @document.visuals
     # if didn't include document.visuals through associations on view page
     # but is highly more preferable to effectively use associations
@@ -120,14 +120,16 @@ private
   end
 
   def linking_refs
-    array = {"AASB 101" => "http://www.aasb.gov.au/admin/file/content105/c9/AASB101_09-07_NFP_COMPdec12_07-13.pdf"}
-    @document.content.gsub!(/((AASB \d+)\S+)/) do |str1|
+    array = {'AASB 5' => 'http://www.aasb.gov.au/admin/file/content105/c9/AASB5_07-04_FP_COMPdec12_07-13.pdf', 'AASB 7' => 'http://www.aasb.gov.au/admin/file/content105/c9/AASB7_08-05_FP_COMPdec12_07-13.pdf', 'AASB 9' => 'http://www.aasb.gov.au/admin/file/content105/c9/AASB9_12-10_COMPdec13_01-17.pdf', 'AASB 10' => 'http://www.aasb.gov.au/admin/file/content105/c9/AASB10_08-11_FP_COMPdec12_07-13.pdf', 'AASB 11' => 'http://www.aasb.gov.au/admin/file/content105/c9/AASB11_08-11_FP_COMPdec12_01-13.pdf', 'AASB 12' => 'http://www.aasb.gov.au/admin/file/content105/c9/AASB12_08-11_FP_COMPdec12_07-13.pdf', "AASB 101" => "http://www.aasb.gov.au/admin/file/content105/c9/AASB101_09-07_NFP_COMPdec12_07-13.pdf", 'AASB 108' => 'http://www.aasb.gov.au/admin/file/content105/c9/AASB108_07-04_COMPdec12_07-13.pdf'}
+
+    @document.content.gsub!(/((AASB \d+)\S+)/) do |str|
       if array.has_key?($2)
         "[#{$1}](#{array[$2]})" # Joel did this but let's never speak of it again.
       else
-        str1
+        str
       end
     end
+
   end
 
   def highlight(text, phrases, options = {})
