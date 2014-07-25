@@ -14,7 +14,9 @@
 
     <% else %>
 
-      <p><%= link_to('Create a new Forum', new_post_path) %></p>
+      <% if @current_user %>
+        <p><%= link_to('Create a new Forum', new_post_path) %></p>
+      <% end %>
 
       <% @posts.reverse.each do |post| %>
         <%= link_to post_path(post), escape: false do %>

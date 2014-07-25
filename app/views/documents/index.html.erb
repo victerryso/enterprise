@@ -4,7 +4,7 @@
 
 <div class='main'>
 
-  <%= paginate Document.page(params[:page]).per(1), :window => 0 %><br/>
+  <p><%= paginate Document.page(params[:page]).per(1), :window => 0 %></p>
 
   <h2><%= @document.title if @document%></h2>
   <%= highlight(markdown(@document.content), params[:search_term]) if @document%>

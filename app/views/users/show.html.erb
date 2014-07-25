@@ -1,7 +1,9 @@
-<!-- Form to show an index of all users -->
+<div class='empty-black'></div>
 
-<div class="users_show">
-  <p><%= @user.username %></p>
-  <p><%= image_tag(@user.avatar, :class => 'medium') if @user.avatar %></p>
+<div class='main'>
+
+  <h2><%= @user.username %></h2>
+  <p><%= image_tag(@user.avatar, :class => 'doc_img') if @user.avatar %></p>
   <p><%= @user.email if @user.email %></p>
-</div><!-- users_show_div -->
+
+</div>

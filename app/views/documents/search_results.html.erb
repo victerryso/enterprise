@@ -1,8 +1,11 @@
 <!-- Displays list of search results and links to respective documents -->
 
+<div class='empty-black'></div>
 
-<h1>Search results</h1>
+<div class='main'>
+  <h1>Search results</h1>
 
-<% @documents.each do |doc| %>
-  <p><%= link_to doc.title, documents_path(:page => doc.pagenumber, :search_term => params[:search]) %></p>
-<% end %>
+    <% @documents.each do |doc| %>
+      <p><%= link_to doc.title, documents_path(:page => doc.pagenumber, :search_term => params[:search]) %></p>
+    <% end %>
+</div>
