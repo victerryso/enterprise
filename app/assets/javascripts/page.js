@@ -94,20 +94,20 @@ $(document).ready( function () {
 
 // Disable Right-Click
 
-// $(document).on({
-//   "contextmenu": function(e) {
-//     e.preventDefault();
-//   },
+$(document).on({
+  "contextmenu": function(e) {
+    e.preventDefault();
+  },
 
-//   "mousedown": function(e) {
-//     e.preventDefault();
-//   },
+  "mousedown": function(e) {
+    e.preventDefault();
+  },
 
-//   "mouseup": function(e) {
-//     e.preventDefault();
-//   }
+  "mouseup": function(e) {
+    e.preventDefault();
+  }
 
-// });
+});
 
 });
 
