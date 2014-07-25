@@ -38,19 +38,100 @@ $(document).ready( function () {
 //////////////////////////////////////////////////
 
   var toggleMenu = function() {
-    $('#side-menu').slideToggle(1000);
+    $('#side-menu').fadeToggle(1000);
   };
 
   $('#hamburger').click(toggleMenu);
 
 //////////////////////////////////////////////////
 
-  var darkenBox = function () {
-    $(this).animateToggle({opacity: 0.5});
-  }
+  // var darkenBox = function () {
+  //   $(this).animate({opacity: 0.5}).css({'z-index' : -1});
+    
+  // }
 
-  $('.box').hover(darkenBox);
-  
+  // $('.box').hover(darkenBox);
+
+
+//   function myFunction()
+// {
+// document.getElementById("myDIV").style.zIndex = "-1";
+// }
+
+  var $btn = $('.blackbox');
+    $('#box1').mouseenter(function () {
+        $btn.show();
+         
+        
+    });
+
+    $('.box').mouseleave(function () {
+        $btn.hide();
+        
+    });
+
+
+    var $btn2 = $('.blackbox2');
+    $('#box2').mouseenter(function () {
+        $btn2.show();
+         
+        
+    });
+
+    $('.box').mouseleave(function () {
+        $btn2.hide();
+        
+    });
+
+     var $btn3 = $('.blackbox3');
+    $('#box3').mouseenter(function () {
+        $btn3.show();
+         
+        
+    });
+
+    $('.box').mouseleave(function () {
+        $btn3.hide();
+        
+    });
+
+
+    var $btn4 = $('.blackbox4');
+    $('#box4').mouseenter(function () {
+        $btn4.show();
+         
+        
+    });
+
+    $('.box').mouseleave(function () {
+        $btn4.hide();
+        
+    });
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 // $(document).on({

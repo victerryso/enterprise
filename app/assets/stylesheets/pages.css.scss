@@ -53,13 +53,52 @@ p {
   text-align: center;
   height: 240px;
   width: 380px;
-  // border-radius:100%;
+  /*border-radius:100%;*/
   margin: 1em;
   display: inline-block;
-  // border: 2px solid black;
+  /*border: 2px solid black;*/
   background-size: cover;
   line-height: 240px;
+  position: relative;
+  /*z-index: -1;*/
+
+  
 }
+
+.blackbox, .blackbox2, .blackbox3, .blackbox4{
+  text-align: center;
+  height: 240px;
+  width: 380px;
+  /*border-radius:100%;*/
+  margin: 1em;
+  /*display: inline-block;*/
+  /*border: 2px solid black;*/
+  /*background-size: cover;*/
+  line-height: 240px;
+  background-color: black;
+  display: none;
+  opacity: 0.5;
+  margin: -0px;
+ /* z-index: -1;*/
+  
+
+}
+
+span{
+  position: absolute;
+ 
+  
+}
+
+.span{
+  font-size: 24px;
+  margin: -50px;
+  color : white;
+  /*color: rgba(255,255,255,1); */
+
+}
+
+
 
 .box-heading {
   display: inline-block;
@@ -67,6 +106,12 @@ p {
 
 #box1 {
   background-image: image-url('project_matrix.jpg');
+
+}
+
+.div{
+  display: none;
+  
 }
 
 #box2 {
