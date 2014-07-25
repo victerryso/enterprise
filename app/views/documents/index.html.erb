@@ -8,15 +8,13 @@
 
    <h2><%= @document.title if @document%></h2>
       <p id='doc-content'><%= highlight(markdown(@document.content), params[:search_term]) if @document%></p>
-      <% if @document.pagenumber %>
-        <p>Page number: <%= @document.pagenumber %></p>
-      <% end %>
+
 
       <% @document.visuals.each do |visual| %>
       <div>
-        <p><%= visual.title %></p>
+   
         <%= image_tag visual.image_url, :class => 'doc_img' if visual.image %>
-        <%= link_to 'delete', visual, :data =>{:confirm => 'Remove image?', :method => :delete} %>
+
       </div>
     <% end %>
 
@@ -26,11 +24,16 @@
   <% if @current_user && @current_user.is_admin? %>
 
     <%= link_to('Edit', edit_document_path(@document)) %>
-    | <%= link_to('Remove', @document, :data => {:confirm => 'Are you sure?', :method => :delete }) %>
+    | <%= link_to('Remove Document', @document, :data => {:confirm => 'Please confirm to Remove Document?', :method => :delete }) %>
+
+<% @document.visuals.each do |visual| %>
+| <%= link_to 'Remove Image', visual, :data =>{:confirm => 'Please confirm to Remove Image?', :method => :delete} %>
+<% end %>
+
     | <%= link_to('Export Via JSON',export_documents_path) %>
 
     <% @document.visuals.each do |v| %>
-      <%= v.image_url %><br/>
+      <p>Image path : <%= v.image_url %><br/></p>
     <% end %>
   <% end %>
 </div>
