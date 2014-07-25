@@ -10,6 +10,9 @@ The end users experience the interactive CMS to get a desired information instan
 
 The demo version is found in URL: http://enterprisedot.herokuapp.com/
 
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
 * Requirements Ruby and Rails
   The application is created with Ruby2.0 / Rails4.1.1
 
@@ -40,8 +43,7 @@ The demo version is found in URL: http://enterprisedot.herokuapp.com/
   carrier wave https://github.com/carrierwaveuploader/carrierwave
 
 * Services (job queues, cache servers, search engines, etc.)
-  - Search the contents from the serach
-  - Forum with comments/ search function for titles
+   - Search the contents from the serach
 
 * How to use edit section / Markdown
   The system uses markdown language (Redcarpet) to create HTML file.
@@ -49,6 +51,10 @@ The demo version is found in URL: http://enterprisedot.herokuapp.com/
 
 * About us / team
   Genral Assembly Sydney WDI-5 students group.
+  Team name is:
 
-*Copyright (c) 2014,
-  Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+
+
+Copyright (c) 2014, << our team name >>
+
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
