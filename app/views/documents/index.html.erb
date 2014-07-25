@@ -6,8 +6,20 @@
 
   <p><%= paginate Document.page(params[:page]).per(1), :window => 0 %></p>
 
-  <h2><%= @document.title if @document%></h2>
-  <%= highlight(markdown(@document.content), params[:search_term]) if @document%>
+   <h2><%= @document.title if @document%></h2>
+      <p id='doc-content'><%= highlight(markdown(@document.content), params[:search_term]) if @document%></p>
+      <% if @document.pagenumber %>
+        <p>Page number: <%= @document.pagenumber %></p>
+      <% end %>
+
+      <% @document.visuals.each do |visual| %>
+      <div>
+        <p><%= visual.title %></p>
+        <%= image_tag visual.image_url, :class => 'doc_img' if visual.image %>
+        <%= link_to 'delete', visual, :data =>{:confirm => 'Remove image?', :method => :delete} %>
+      </div>
+    <% end %>
+
   
   <p><%= paginate Document.page(params[:page]).per(1), :window => 0 %></p>
 
