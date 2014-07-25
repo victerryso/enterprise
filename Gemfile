@@ -49,6 +49,8 @@ gem 'rails_12factor', group: :production
 # for markdown
 gem 'markdown-rails'
 gem 'redcarpet'
+
+# for pagination
 gem 'kaminari'
 
 group :development do
