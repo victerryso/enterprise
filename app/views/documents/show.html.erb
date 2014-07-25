@@ -1,5 +1,5 @@
 <!-- This displays the individual document and allows the user to edit or remove it.
-It also lists the relating revision number to the document 
+It also lists the relating revision number to the document
 Only for a signed-in user -->
 
 <div class='empty-black'></div>
@@ -12,15 +12,12 @@ Only for a signed-in user -->
     <!--showing document title and contents -->
       <h2><%= @document.title if @document%></h2>
       <p id='doc-content'><%= markdown(@document.content) if @document%></p>
-      <% if @document.pagenumber %>
-        <p>Page number: <%= @document.pagenumber %></p>
-      <% end %>
 
       <% @document.visuals.each do |visual| %>
       <div>
         <p><%= visual.title %></p>
         <%= image_tag visual.image_url, :class => 'doc_img' if visual.image %>
-        <%= link_to 'delete', visual, :data =>{:confirm => 'Remove image?', :method => :delete} %>
+        <%= link_to 'Delete', visual, :data =>{:confirm => 'Remove image?', :method => :delete} %>
       </div>
     <% end %>
 
