@@ -7,7 +7,7 @@ There are two major functions.
 User can create / edit / remove  HTML file document from plain text with markdown language.
 The end users experience the interactive CMS to get a desired information instantly.
 
-The demo version is found in URL: http://enterprisedot.herokuapp.com/
+http://enterprisedot.herokuapp.com/
 
 * Requirements Ruby and Rails
   The application is created with Ruby2.0 / Rails4.1.1
