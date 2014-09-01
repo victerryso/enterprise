@@ -1,7 +1,6 @@
-== README
-Project name: enterprise
+==  Enterprise.
 
-enterprise. is a contents management system.
+Enterprise. is a contents management system.
 The system is created for providing the end users to experience of interactive web CMS (contents management system).
 
 There are two major functions.
